@@ -1,0 +1,109 @@
+<div class="text-center container">
+  <Head>
+    <title>[TF2] Weapon Generator</title>
+    <link rel="stylesheet" href="/bootstrap.css" />
+    <link rel="icon" href="/favicon.ico" />
+  </Head>
+
+  <main>
+    <div class="card my-5" >
+      <img src="/tf2.jpg" class="card-img-top" alt="tf2-heroes">
+      <h1 class="card-title">TF2 Weapon Generator</h1>
+      <p class="card-text">
+        Created by <code>Aleksandar Dinkov</code>
+      </p>
+    </div>
+    
+    <div class="row justify-content-around">
+      <div class="col-5 px-3 py-3 bg-light border-bottom border-top border-dark">
+        <h3 class="title">Settings:</h3>
+
+        <div class="row">
+          <div class="col-5">Power Level</div>
+          <div class="col-2"> : </div>
+          <div class="col-5">
+            <select id="powerLevelSelect">
+              <option value="-3">Trash</option>
+              <option value="-1">Toy</option>
+              <option value="0" selected>
+                Normal
+              </option>
+              <option value="1">OP</option>
+              <option value="3">God</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-5">Class</div>
+          <div class="col-2"> : </div>
+          <div class="col-5">
+            <select id="playerClassSelect">
+              <option value="0" selected>
+                Any
+              </option>
+              <option value="1">Scout</option>
+              <option value="2">Soldier</option>
+              <option value="3">Pyro</option>
+              <option value="4">Demoman</option>
+              <option value="5">Heavy</option>
+              <option value="6">Engi</option>
+              <option value="7">Medic</option>
+              <option value="8">Sniper</option>
+              <option value="9">Spy</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-5">Slot</div>
+          <div class="col-2"> : </div>
+          <div class="col-5">
+            <select id="weaponSlotSelect">
+              <option value="0" selected>
+                Any
+              </option>
+              <option value="1">Primary</option>
+              <option value="2">Secondary</option>
+              <option value="3">Melee</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-5 px-3 py-3 bg-light border-bottom border-top border-dark">
+        <button
+          type="button"
+          class="btn btn-lg btn-dark btn-outline-info"
+          id="generateBtn"
+        >
+          Generate
+        </button>
+
+        <div id="generatedWeaponArea"></div>
+      </div>
+    </div>
+
+    <script src="/generator.js"></script>
+  </main>
+
+  <footer>
+    <br />
+    <br />
+    <br />
+    <p>
+      If you like this project, feel free to send me a tip:
+      <ul>
+        <li>
+          BitcoinSV: <a href="https://handcash.io/">bitcoinsofia@handcash.io</a>
+        </li>
+        <li>
+          PayPal: 
+          <a href="https://paypal.me/AlexanderDinkov?locale.x=en_US">
+            My PayPal.Me Link
+          </a>
+        </li>
+      </ul>
+    </p>
+  </footer>
+</div>;
