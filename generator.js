@@ -497,6 +497,21 @@ weaponTypeGroups.All = [
   ...weaponTypeGroups.Passive,
   ...weaponTypeGroups.Melee,
 ];
+weaponTypeGroups.AllDemoknight = [
+  "Demoknight_Shield",
+  "Demoknight_Booties",
+  "Demoknight_Melee",
+];
+
+weaponTypeGroups.AllScout = weaponTypesByClass[0].map((w) => w.type.name);
+weaponTypeGroups.AllSoldier = weaponTypesByClass[1].map((w) => w.type.name);
+weaponTypeGroups.AllPyro = weaponTypesByClass[2].map((w) => w.type.name);
+weaponTypeGroups.AllDemoman = weaponTypesByClass[3].map((w) => w.type.name);
+weaponTypeGroups.AllHeavy = weaponTypesByClass[4].map((w) => w.type.name);
+weaponTypeGroups.AllEngineer = weaponTypesByClass[5].map((w) => w.type.name);
+weaponTypeGroups.AllMedic = weaponTypesByClass[6].map((w) => w.type.name);
+weaponTypeGroups.AllSniper = weaponTypesByClass[7].map((w) => w.type.name);
+weaponTypeGroups.AllSpy = weaponTypesByClass[8].map((w) => w.type.name);
 
 const weaponEffects = [
   {
@@ -743,6 +758,16 @@ const weaponEffects = [
   // TODO: Add effects specifically for "ChargeablePassive"
   // TODO: Add effects specifically for "Passive"
   // TODO: Add effects specifically for "Melee"
+  // TODO: Add effects specifically for "AllScout"
+  // TODO: Add effects specifically for "AllSoldier"
+  // TODO: Add effects specifically for "AllPyro"
+  // TODO: Add effects specifically for "AllDemoman"
+  // TODO: Add effects specifically for "AllHeavy"
+  // TODO: Add effects specifically for "AllEngineer"
+  // TODO: Add effects specifically for "AllMedic"
+  // TODO: Add effects specifically for "AllSniper"
+  // TODO: Add effects specifically for "AllSpy"
+  // TODO: Add effects specifically for "AllDemoknight"
 ];
 
 generateBtn.addEventListener("click", () => {
