@@ -249,43 +249,100 @@ const mandatoryPros = {
   ],
 
   Drink_Can: [
-    { pointCost: 0, text: "______________________" },
-    { pointCost: 0, text: "______________________" },
-    { pointCost: 0, text: "______________________" },
-    { pointCost: 0, text: "______________________" },
+    {
+      pointCost: 0,
+      text: "While effect is active: All attacks cause additional explosive damage",
+    },
+    {
+      pointCost: 0,
+      text: "While effect is active: All attacks cause additional bleed damage",
+    },
+    {
+      pointCost: 0,
+      text: "While effect is active: 30% of all inflicted damage is returns as healing",
+    },
+    {
+      pointCost: 0,
+      text: "While effect is active: User can air-jump 2 more times",
+    },
+    {
+      pointCost: 0,
+      text: "While effect is active: Grants 35% resistance to all damage",
+    },
   ],
   Heavy_Food: [
-    { pointCost: 0, text: "______________________" },
-    { pointCost: 0, text: "______________________" },
-    { pointCost: 0, text: "______________________" },
-    { pointCost: 0, text: "______________________" },
+    {
+      pointCost: -1,
+      text: "Eat to receive 15% damage resistance for 10 seconds. Alt-fire: Share with a friend (Small Health Kit)",
+    },
+    {
+      pointCost: -1,
+      text: "Eat to receive 25% walking speed boost for 15 seconds. Alt-fire: Share with a friend (Small Health Kit)",
+    },
+    {
+      pointCost: -1,
+      text: "A box of ammunition. Refills your ammo when used. Alt-fire: Share with a friend (Medium Ammo Kit)",
+    },
   ],
   Demoknight_Shield: [
     {
       pointCost: 0,
-      text: "Alt-Fire: Charge toward your enemies and remove debuffs",
+      text: "Alt-Fire: Charge toward your enemies and remove debuffs. Gain a critical melee strike after impacting an enemy at distance",
+    },
+    {
+      pointCost: 0,
+      text: "Alt-Fire: Charge toward your enemies and remove debuffs. Restore health after impacting an enemy",
+    },
+    {
+      pointCost: 0,
+      text: "Alt-Fire: Charge toward your enemies and remove debuffs. Slows enemies on impact",
+    },
+    {
+      pointCost: 0,
+      text: "Alt-Fire: Charge toward your enemies and remove debuffs. On impact enemies receive great knockback",
     },
   ],
   Banner: [
     {
-      pointCost: 0,
-      text: "On Full Meter: Provides group buff that __________________",
+      pointCost: -1,
+      text: "While active: Provides group buff that slowly heals nearby teammates",
     },
     {
-      pointCost: 0,
-      text: "On Full Meter: Provides group buff that __________________",
+      pointCost: -1,
+      text: "While active: Provides group buff that increases the attack rate of nearby teammates",
+    },
+    {
+      pointCost: -1,
+      text: "While active: Provides group debuff that makes nearby enemies 20% more vulnerable to all damage",
     },
   ],
 
   Explosive_Melee: [
     { pointCost: 1, text: "The first hit will cause an explosion" },
-    { pointCost: 1, text: "____________________________________" },
-    { pointCost: 1, text: "____________________________________" },
+    {
+      pointCost: 1,
+      text: "The first hit will apply great knockback on the enemy",
+    },
+    {
+      pointCost: 1,
+      text: "The first hit will attach the enemy to you. Neither will be able to move far from the other",
+    },
   ],
 
   Pybro_Melee: [
     { pointCost: 1, text: "Damage removes Sappers" },
-    { pointCost: 1, text: "____________________________________" },
+    {
+      pointCost: 1,
+      text: "Hitting friendly buildings helps them deploy faster",
+    },
+    {
+      pointCost: 1,
+      text: "Hitting friendly buildings makes them immune to sappers for 5 seconds",
+    },
+    {
+      pointCost: 1,
+      text: "Hitting friendly buildings makes them operate 15% faster for 5 seconds",
+    },
   ],
   Melee_with_Projectile: [
     {
