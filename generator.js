@@ -316,13 +316,6 @@ function generateWeapon(playerClass, weaponSlot, powerLevel) {
   const proBoost = Math.max(0, weaponType.needsBoost);
   const conBoost = Math.max(0, -weaponType.needsBoost);
 
-  console.dir(weaponType);
-  console.table({
-    proBoost,
-    conBoost,
-    needsBoost: weaponType.needsBoost,
-  });
-
   const weapon = {
     playerClass: playerClass,
     playerClassName: strings.classes[playerClass],
@@ -335,10 +328,26 @@ function generateWeapon(playerClass, weaponSlot, powerLevel) {
     cons: [],
   };
 
+  addMandatoryPro(weapon);
   addWeaponPros(weapon);
   addWeaponCons(weapon);
 
   return weapon;
+}
+
+function addMandatoryPro(weapon) {
+  const mandatoryProOptions = mandatoryPros[weapon.type];
+  if (!mandatoryProOptions || !mandatoryProOptions.length) return;
+  const selectedPro =
+    mandatoryProOptions[getRandom(0, mandatoryProOptions.length - 1)];
+
+  weapon.pros.push(selectedPro.text);
+  weapon.proPoints -= selectedPro.pointCost;
+
+  if (weapon.proPoints < 0) {
+    weapon.conPoints += -weapon.proPoints;
+    weapon.proPoints = 0;
+  }
 }
 
 function addWeaponPros(weapon) {}
@@ -351,6 +360,7 @@ function selectWeaponType(playerClass, weaponSlot, powerLevel) {
   const choice = cloneJson(
     possibleChoices[getRandom(0, possibleChoices.length - 1)]
   );
+  choice.type.needsBoost = choice.type.needsBoost || 0;
   choice.type.needsBoost += powerLevel;
   return choice.type;
 }
