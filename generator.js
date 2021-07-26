@@ -430,6 +430,23 @@ weaponTypeGroups.AllProjectile = [
   ...weaponTypeGroups.ExplosiveProjectile,
   "Melee_with_Projectile",
 ];
+weaponTypeGroups.AllReloading = [
+  ...weaponTypeGroups.BurstBullet,
+  ...weaponTypeGroups.SingleBullet,
+  ...weaponTypeGroups.SemiAutomaticBullet,
+  "Submachine_Gun",
+  ...weaponTypeGroups.AutomaticProjectiles,
+  ...weaponTypeGroups.ExplosiveProjectile,
+];
+weaponTypeGroups.AllWithAmmo = [
+  ...weaponTypeGroups.BurstBullet,
+  ...weaponTypeGroups.SingleBullet,
+  ...weaponTypeGroups.SemiAutomaticBullet,
+  ...weaponTypeGroups.AutomaticBullet,
+  ...weaponTypeGroups.AutomaticFlame,
+  ...weaponTypeGroups.Projectile,
+  ...weaponTypeGroups.AutomaticProjectiles,
+];
 weaponTypeGroups.AllAutomatic = [
   ...weaponTypeGroups.AutomaticBullet,
   ...weaponTypeGroups.AutomaticFlame,
@@ -439,6 +456,29 @@ weaponTypeGroups.AllPassive = [
   ...weaponTypeGroups.ConsumablePassive,
   ...weaponTypeGroups.ChargeablePassive,
   ...weaponTypeGroups.Passive,
+];
+weaponTypeGroups.AllCanHit = [
+  ...weaponTypeGroups.BurstBullet,
+  ...weaponTypeGroups.SingleBullet,
+  ...weaponTypeGroups.SemiAutomaticBullet,
+  ...weaponTypeGroups.AutomaticBullet,
+  ...weaponTypeGroups.AutomaticFlame,
+  ...weaponTypeGroups.Projectile,
+  ...weaponTypeGroups.AutomaticProjectiles,
+  ...weaponTypeGroups.ConsumableProjectile,
+  ...weaponTypeGroups.ExplosiveProjectile,
+  ...weaponTypeGroups.Melee,
+];
+weaponTypeGroups.AllDoesDamage = [
+  ...weaponTypeGroups.BurstBullet,
+  ...weaponTypeGroups.SingleBullet,
+  ...weaponTypeGroups.SemiAutomaticBullet,
+  ...weaponTypeGroups.AutomaticBullet,
+  ...weaponTypeGroups.AutomaticFlame,
+  ...weaponTypeGroups.Projectile,
+  ...weaponTypeGroups.AutomaticProjectiles,
+  ...weaponTypeGroups.ExplosiveProjectile,
+  ...weaponTypeGroups.Melee,
 ];
 weaponTypeGroups.All = [
   ...weaponTypeGroups.BurstBullet,
@@ -456,6 +496,253 @@ weaponTypeGroups.All = [
   ...weaponTypeGroups.ChargeablePassive,
   ...weaponTypeGroups.Passive,
   ...weaponTypeGroups.Melee,
+];
+
+const weaponEffects = [
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllReloading,
+    pro: "<value>% faster reload speed",
+    con: "<value>% slower reload speed",
+    valuePro: 20,
+    valueCon: 20,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllBullet,
+    pro: "On Headshot: +<value>% damage",
+    con: "On Hit: -<value>% damage if the hit wasn't a headshot",
+    valuePro: 30,
+    valueCon: 10,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllAutomatic,
+    pro: "Weapon firing speed increases as it gets fired for longer",
+    con: "Weapon firing speed decreases as it gets fired for longer",
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllBullet,
+    pro: "On Headshot: +<value>% damage",
+    con: "On Hit: -<value>% damage if the hit wasn't a headshot",
+    valuePro: 30,
+    valueCon: 10,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllBullet,
+    pro: "<value>% less bullet spread",
+    con: "<value>% more bullet spread",
+    valuePro: 30,
+    valueCon: 30,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllExplosive,
+    pro: "<value>% larger explosion radius",
+    con: "<value>% smaller explosion radius",
+    valuePro: 20,
+    valueCon: 20,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllExplosive,
+    pro: "<value>% stronger explosion knockback",
+    con: "<value>% weaker explosion knockback",
+    valuePro: 50,
+    valueCon: 50,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllExplosive,
+    pro: "<value>% less damage to self",
+    con: "<value>% more damage to self",
+    valuePro: 35,
+    valueCon: 35,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllProjectile,
+    pro: "<value>% faster projectile speed",
+    con: "<value>% slower projectile speed",
+    valuePro: 40,
+    valueCon: 40,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllProjectile,
+    pro: "Projectile cannot be reflected",
+    con: "Projectile deals 100% crit damage when reflected",
+    valuePro: 30,
+    valueCon: 30,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllProjectile,
+    pro: "Projectile cannot be reflected",
+    con: "Projectile deals 100% crit damage when reflected",
+    valuePro: 30,
+    valueCon: 30,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllCanHit,
+    pro: "On Hit: +<value> HP",
+    con: "On Miss: -<value> HP",
+    valuePro: 15,
+    valueCon: 15,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllCanHit,
+    pro: "On Hit: Receive a small speed boost for <value> seconds",
+    con: "On Miss: Receive a small slow run debuf for <value> seconds",
+    valuePro: 3,
+    valueCon: 3,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllCanHit,
+    pro: "On Hit Teammate: Grant <value>% faster firing rate to both for 4 seconds",
+    con: "On Miss: <value>% slower firing rate for the next 4 seconds",
+    valuePro: 30,
+    valueCon: 15,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllCanHit,
+    pro: "On Hit: Enemy moves <value>% slower for 3 seconds",
+    con: "On Miss: You move <value>% slower for 3 seconds",
+    valuePro: 20,
+    valueCon: 20,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.All,
+    pro: "+<value> Max HP",
+    con: "-<value> Max HP",
+    valuePro: 30,
+    valueCon: 30,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.All,
+    pro: "+<value>% Max HP",
+    con: "-<value>% Max HP",
+    valuePro: 20,
+    valueCon: 20,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.All,
+    pro: "+<value>% ammo on all weapons",
+    con: "-<value>% ammo on all weapons",
+    valuePro: 30,
+    valueCon: 30,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.All,
+    pro: "Heals up to +<value> HP per second, while not taking damage",
+    con: "Bleeds up to -<value> HP per second, after not receiving healing for a while",
+    valuePro: 3,
+    valueCon: 3,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.All,
+    pro: "<value>% faster running speed",
+    con: "<value>% slower running speed",
+    valuePro: 10,
+    valueCon: 10,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.All,
+    pro: "This weapon deploys <value>% faster",
+    con: "This weapon deploys <value>% slower",
+    valuePro: 40,
+    valueCon: 40,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.All,
+    pro: "Can see the HP of enemies",
+    con: "Enemies can see your HP",
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllDoesDamage,
+    pro: "+<value>% damage increase",
+    con: "-<value>% damage penalty",
+    valuePro: 15,
+    valueCon: 20,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllDoesDamage,
+    pro: "On Hit: Causes enemy to bleed for <value> seconds",
+    con: "On Miss: Causes you to bleed for <value> seconds",
+    valuePro: 5,
+    valueCon: 2,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllDoesDamage,
+    pro: "On Hit: Makes enemies unable to switch weapons for <value> seconds",
+    con: "On Miss: Makes you unable to switch weapons for <value> seconds",
+    valuePro: 5,
+    valueCon: 3,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllDoesDamage,
+    pro: "On Hit: Makes enemies unable to reload weapons for <value> seconds",
+    con: "On Miss: Makes you unable to reload weapons for <value> seconds",
+    valuePro: 5,
+    valueCon: 3,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllDoesDamage,
+    pro: "Crits whenever it would normally mini-crit",
+    con: "Cannot Crit",
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllDoesDamage,
+    pro: "Increased chance of random critical hit",
+    con: "No random critical hits",
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllBullet,
+    pro: "Bullets pass through enemies",
+    con: "Bullets cannot pass through allies",
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllBullet,
+    pro: "Reduced falloff damage correction",
+    con: "Increased falloff damage correction",
+  },
+
+  // TODO: Add effects specifically for "BurstBullet"
+  // TODO: Add effects specifically for "SingleBullet"
+  // TODO: Add effects specifically for "SemiAutomaticBullet"
+  // TODO: Add effects specifically for "AutomaticBullet"
+  // TODO: Add effects specifically for "AutomaticFlame"
+  // TODO: Add effects specifically for "Projectile"
+  // TODO: Add effects specifically for "AutomaticProjectiles"
+  // TODO: Add effects specifically for "ConsumableProjectile"
+  // TODO: Add effects specifically for "ExplosiveProjectile"
+  // TODO: Add effects specifically for "Medi_Gun"
+  // TODO: Add effects specifically for "Sapper"
+  // TODO: Add effects specifically for "ConsumablePassive"
+  // TODO: Add effects specifically for "ChargeablePassive"
+  // TODO: Add effects specifically for "Passive"
+  // TODO: Add effects specifically for "Melee"
 ];
 
 generateBtn.addEventListener("click", () => {
@@ -496,8 +783,7 @@ function generateWeapon(playerClass, weaponSlot, powerLevel) {
   };
 
   addMandatoryPro(weapon);
-  addWeaponPros(weapon);
-  addWeaponCons(weapon);
+  addWeaponProsAndCons(weapon);
 
   return weapon;
 }
@@ -517,9 +803,18 @@ function addMandatoryPro(weapon) {
   }
 }
 
-function addWeaponPros(weapon) {}
-
-function addWeaponCons(weapon) {}
+function addWeaponProsAndCons(weapon) {
+  // TODO: Implement a way to select pros and cons for a weapon
+  //      - 1 - count how many pros and cons we need combined
+  //      - 2 - filter all effect options that can be applied to this weapon
+  //      - 3 - select pros and cons randomly from the options
+  //      - 4 - a pro option and a con option cannot be the same
+  //      - 5 - if pro or con options were repeated and cannot be combined - replace the repeat
+  //      - 6 - if pro or con options were repeated and they can be combined - combine them
+  //      - 7 - add some randomness to all options that have values
+  //      - 8 - add the pros and cons to the weapon
+  //      - 9 - done!
+}
 
 function selectWeaponType(playerClass, weaponSlot, powerLevel) {
   const classWeapons = weaponTypesByClass[playerClass - 1];
