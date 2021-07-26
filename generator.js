@@ -384,6 +384,80 @@ const mandatoryPros = {
   ],
 };
 
+const weaponTypeGroups = {
+  // BASIC GROUPS //
+  BurstBullet: ["Scattergun", "Shotgun"],
+  SingleBullet: ["Sniper_Rifle"],
+  SemiAutomaticBullet: ["Sniper_Rifle", "Spy_Revolver", "Pistol"],
+  AutomaticBullet: ["Minigun", "Submachine_Gun"],
+  AutomaticFlame: ["Flamethrower"],
+  Projectile: ["Bow_and_Arrows", "Flare_Gun"],
+  AutomaticProjectiles: ["Syringe_Gun"],
+  ConsumableProjectile: ["Throwable_AoE", "Throwable_Weapon"],
+  ExplosiveProjectile: ["Rocket_Launcher", "Pipe_Launcher", "Sticky_Launcher"],
+  Medi_Gun: ["Medi_Gun"],
+  Sapper: ["Sapper"],
+  ConsumablePassive: ["Drink_Can", "Heavy_Food"],
+  ChargeablePassive: ["Demoknight_Shield", "Banner", "Invis_Watch"],
+  Passive: ["Sniper_Shield", "Backpack", "Shoes", "Demoknight_Booties"],
+  Melee: [
+    "Melee",
+    "Demoknight_Melee",
+    "Explosive_Melee",
+    "Medic_Melee",
+    "Pybro_Melee",
+    "Melee_with_Projectile",
+    "Wrench_Melee",
+    "Backstabbing_Melee",
+  ],
+};
+
+// ABSTRACT GROUPS //
+weaponTypeGroups.AllBullet = [
+  ...weaponTypeGroups.BurstBullet,
+  ...weaponTypeGroups.SingleBullet,
+  ...weaponTypeGroups.SemiAutomaticBullet,
+  ...weaponTypeGroups.AutomaticBullet,
+];
+weaponTypeGroups.AllExplosive = [
+  ...weaponTypeGroups.ExplosiveProjectile,
+  "Explosive_Melee",
+];
+weaponTypeGroups.AllProjectile = [
+  ...weaponTypeGroups.Projectile,
+  ...weaponTypeGroups.AutomaticProjectiles,
+  ...weaponTypeGroups.ConsumableProjectile,
+  ...weaponTypeGroups.ExplosiveProjectile,
+  "Melee_with_Projectile",
+];
+weaponTypeGroups.AllAutomatic = [
+  ...weaponTypeGroups.AutomaticBullet,
+  ...weaponTypeGroups.AutomaticFlame,
+  ...weaponTypeGroups.AutomaticProjectiles,
+];
+weaponTypeGroups.AllPassive = [
+  ...weaponTypeGroups.ConsumablePassive,
+  ...weaponTypeGroups.ChargeablePassive,
+  ...weaponTypeGroups.Passive,
+];
+weaponTypeGroups.All = [
+  ...weaponTypeGroups.BurstBullet,
+  ...weaponTypeGroups.SingleBullet,
+  ...weaponTypeGroups.SemiAutomaticBullet,
+  ...weaponTypeGroups.AutomaticBullet,
+  ...weaponTypeGroups.AutomaticFlame,
+  ...weaponTypeGroups.Projectile,
+  ...weaponTypeGroups.AutomaticProjectiles,
+  ...weaponTypeGroups.ConsumableProjectile,
+  ...weaponTypeGroups.ExplosiveProjectile,
+  ...weaponTypeGroups.Medi_Gun,
+  ...weaponTypeGroups.Sapper,
+  ...weaponTypeGroups.ConsumablePassive,
+  ...weaponTypeGroups.ChargeablePassive,
+  ...weaponTypeGroups.Passive,
+  ...weaponTypeGroups.Melee,
+];
+
 generateBtn.addEventListener("click", () => {
   const playerClass = playerClassSelect.value;
   const weaponSlot = weaponSlotSelect.value;
