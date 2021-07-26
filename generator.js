@@ -168,16 +168,34 @@ const weaponTypesByClass = [
 const mandatoryPros = {
   Flare_Gun: [
     { pointCost: 0, text: "100% mini-crits vs burning players" },
-    { pointCost: 0, text: "_______________________" },
-    { pointCost: 0, text: "_______________________" },
+    { pointCost: -1, text: "On Hit: Makes enemy wet and slows them down" },
+    { pointCost: 0, text: "100% mini-crits vs wet players" },
   ],
   Throwable_AoE: [
-    { pointCost: 0, text: "_______________________" },
-    { pointCost: 0, text: "_______________________" },
-    { pointCost: 0, text: "_______________________" },
-    { pointCost: 0, text: "_______________________" },
-    { pointCost: 0, text: "_______________________" },
-    { pointCost: 0, text: "_______________________" },
+    {
+      pointCost: 0,
+      text: "On Hit: Covered teammates receive temporary 20% damage resistance",
+    },
+    {
+      pointCost: 0,
+      text: "On Hit: Covered enemies cannot swap weapons for a few seconds",
+    },
+    {
+      pointCost: 0,
+      text: "On Hit: Covered engineer buildings get disabled for 5 seconds",
+    },
+    {
+      pointCost: 0,
+      text: "On Hit: Covered enemies reload time is doubled for 10 seconds",
+    },
+    {
+      pointCost: 0,
+      text: "On Hit: Covered enemies can be seen through walls by your teammates for 4 seconds",
+    },
+    {
+      pointCost: 0,
+      text: "On Hit: Covered enemies cannot attack for 2 seconds",
+    },
   ],
   Throwable_Weapon: [
     {
@@ -199,6 +217,8 @@ const mandatoryPros = {
   ],
 
   Medi_Gun: [
+    { pointCost: 0, text: "_______________________" },
+    { pointCost: 0, text: "_______________________" },
     { pointCost: 0, text: "_______________________" },
     { pointCost: 0, text: "_______________________" },
     { pointCost: 0, text: "_______________________" },
