@@ -35,7 +35,7 @@ const weaponTypes = {
   Flamethrower: { name: "Flamethrower" },
   // Projectile
   Bow_and_Arrows: { name: "Bow_and_Arrows" },
-  Flare_Gun: { name: "Flare_Gun" },
+  Flare_Gun: { name: "Flare_Gun", needsBoost: 2 },
   // Continuous Projectiles
   Syringe_Gun: { name: "Syringe_Gun" },
   // Consumable Projectile
@@ -53,7 +53,7 @@ const weaponTypes = {
   Drink_Can: { name: "Drink_Can" },
   Heavy_Food: { name: "Heavy_Food" },
   // Chargeable Passive
-  Demoknight_Shield: { name: "Demoknight_Shield" },
+  Demoknight_Shield: { name: "Demoknight_Shield", needsBoost: 2 },
   Banner: { name: "Banner" },
   Invis_Watch: { name: "Invis_Watch" },
   // Passive
@@ -167,122 +167,125 @@ const weaponTypesByClass = [
 
 const mandatoryPros = {
   Flare_Gun: [
-    { needsBuff: 1, text: "100% mini-crits vs burning players" },
-    { needsBuff: 1, text: "_______________________" },
-    { needsBuff: 1, text: "_______________________" },
+    { pointCost: 0, text: "100% mini-crits vs burning players" },
+    { pointCost: 0, text: "_______________________" },
+    { pointCost: 0, text: "_______________________" },
   ],
   Throwable_AoE: [
-    { needsBuff: 0, text: "_______________________" },
-    { needsBuff: 0, text: "_______________________" },
-    { needsBuff: 0, text: "_______________________" },
-    { needsBuff: 0, text: "_______________________" },
-    { needsBuff: 0, text: "_______________________" },
-    { needsBuff: 0, text: "_______________________" },
+    { pointCost: 0, text: "_______________________" },
+    { pointCost: 0, text: "_______________________" },
+    { pointCost: 0, text: "_______________________" },
+    { pointCost: 0, text: "_______________________" },
+    { pointCost: 0, text: "_______________________" },
+    { pointCost: 0, text: "_______________________" },
   ],
   Throwable_Weapon: [
     {
-      needsBuff: 0,
+      pointCost: 0,
       text: "Throw at your enemy to deal damage and make them bleed",
     },
     {
-      needsBuff: 0,
+      pointCost: 0,
       text: "Throw at your enemy to deal damage and mark them for death",
     },
     {
-      needsBuff: 0,
+      pointCost: 0,
       text: "Throw at your enemy to deal damage and slow them down",
     },
     {
-      needsBuff: 0,
+      pointCost: 0,
       text: "Throw at your enemy to deal damage and set them on fire",
     },
   ],
 
   Medi_Gun: [
-    { needsBuff: 0, text: "_______________________" },
-    { needsBuff: 0, text: "_______________________" },
-    { needsBuff: 0, text: "_______________________" },
-    { needsBuff: 0, text: "_______________________" },
+    { pointCost: 0, text: "_______________________" },
+    { pointCost: 0, text: "_______________________" },
+    { pointCost: 0, text: "_______________________" },
+    { pointCost: 0, text: "_______________________" },
   ],
 
   Sapper: [
-    { needsBuff: 0, text: "_______________________" },
-    { needsBuff: 0, text: "_______________________" },
-    { needsBuff: 0, text: "_______________________" },
-    { needsBuff: 0, text: "_______________________" },
+    { pointCost: 0, text: "_______________________" },
+    { pointCost: 0, text: "_______________________" },
+    { pointCost: 0, text: "_______________________" },
+    { pointCost: 0, text: "_______________________" },
   ],
 
   Drink_Can: [
-    { needsBuff: 0, text: "_______________________" },
-    { needsBuff: 0, text: "_______________________" },
-    { needsBuff: 0, text: "_______________________" },
-    { needsBuff: 0, text: "_______________________" },
+    { pointCost: 0, text: "_______________________" },
+    { pointCost: 0, text: "_______________________" },
+    { pointCost: 0, text: "_______________________" },
+    { pointCost: 0, text: "_______________________" },
   ],
   Heavy_Food: [
-    { needsBuff: 0, text: "_______________________" },
-    { needsBuff: 0, text: "_______________________" },
-    { needsBuff: 0, text: "_______________________" },
-    { needsBuff: 0, text: "_______________________" },
+    { pointCost: 0, text: "_______________________" },
+    { pointCost: 0, text: "_______________________" },
+    { pointCost: 0, text: "_______________________" },
+    { pointCost: 0, text: "_______________________" },
   ],
   Demoknight_Shield: [
     {
-      needsBuff: 2,
+      pointCost: 0,
       text: "Alt-Fire: Charge toward your enemies and remove debuffs.",
     },
   ],
   Banner: [
     {
-      needsBuff: 0,
+      pointCost: 0,
       text: "On Full Meter: Provides group buff that __________________",
     },
     {
-      needsBuff: 0,
+      pointCost: 0,
       text: "On Full Meter: Provides group buff that __________________",
     },
   ],
 
   Explosive_Melee: [
-    { needsBuff: -1, text: "The first hit will cause an explosion" },
-    { needsBuff: -1, text: "____________________________________" },
-    { needsBuff: -1, text: "____________________________________" },
+    { pointCost: 1, text: "The first hit will cause an explosion" },
+    { pointCost: 1, text: "____________________________________" },
+    { pointCost: 1, text: "____________________________________" },
   ],
 
   Pybro_Melee: [
-    { needsBuff: -1, text: "Damage removes Sappers" },
-    { needsBuff: -1, text: "____________________________________" },
+    { pointCost: 1, text: "Damage removes Sappers" },
+    { pointCost: 1, text: "____________________________________" },
   ],
   Melee_with_Projectile: [
     {
-      needsBuff: -1,
+      pointCost: 1,
       text: "Alt-Fire: Launches a projectile that makes enemies bleed",
     },
     {
-      needsBuff: -1,
+      pointCost: 1,
       text: "Alt-Fire: Launches a projectile that slows enemies",
     },
     {
-      needsBuff: -1,
+      pointCost: 1,
       text: "Alt-Fire: Launches a projectile that applies knockback on enemies",
     },
     {
-      needsBuff: -1,
+      pointCost: 1,
       text: "Alt-Fire: Launches a projectile that heals teammates",
     },
     {
-      needsBuff: -1,
+      pointCost: 1,
       text: "Alt-Fire: Launches a projectile that makes teammates faster",
     },
     {
-      needsBuff: -1,
+      pointCost: 1,
       text: "Alt-Fire: Launches a projectile that deals mini-crit damage",
     },
-    { needsBuff: -1, text: "Alt-Fire: Launches a projectile that explodes" },
     {
-      needsBuff: -1,
+      pointCost: 1,
+      text: "Alt-Fire: Launches a projectile that explodes on impact",
+    },
+    {
+      pointCost: 1,
       text: "Alt-Fire: Launches a projectile that disables sentries for 2 seconds",
     },
     {
-      needsBuff: -1,
+      pointCost: 1,
       text: "Alt-Fire: Launches a projectile that forces enemy to reload",
     },
   ],
