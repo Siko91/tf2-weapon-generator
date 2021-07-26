@@ -217,37 +217,53 @@ const mandatoryPros = {
   ],
 
   Medi_Gun: [
-    { pointCost: 0, text: "_______________________" },
-    { pointCost: 0, text: "_______________________" },
-    { pointCost: 0, text: "_______________________" },
-    { pointCost: 0, text: "_______________________" },
-    { pointCost: 0, text: "_______________________" },
-    { pointCost: 0, text: "_______________________" },
+    {
+      pointCost: -1,
+      text: "ÜberCharge grants +100% speed of movement and attack",
+    },
+    {
+      pointCost: -1,
+      text: "ÜberCharge grants +300% faster control point capture rate",
+    },
+    { pointCost: -1, text: "ÜberCharge grants invisibility" },
+    { pointCost: -1, text: "ÜberCharge grants the ability to fly" },
   ],
 
   Sapper: [
-    { pointCost: 0, text: "_______________________" },
-    { pointCost: 0, text: "_______________________" },
-    { pointCost: 0, text: "_______________________" },
-    { pointCost: 0, text: "_______________________" },
+    {
+      pointCost: 0,
+      text: "Place on enemy buildings to disable and slowly drain away its health",
+    },
+    {
+      pointCost: 0,
+      text: "Place on enemy buildings to disable for 10 seconds. Deals no damage",
+    },
+    {
+      pointCost: 0,
+      text: "Place on enemy buildings to drain their health faster than regular sapper. Does not disable the building",
+    },
+    {
+      pointCost: 0,
+      text: "Place on friendly buildings to improve their performance by 20% at the cost of 30% of their health. Lasts 20 seconds",
+    },
   ],
 
   Drink_Can: [
-    { pointCost: 0, text: "_______________________" },
-    { pointCost: 0, text: "_______________________" },
-    { pointCost: 0, text: "_______________________" },
-    { pointCost: 0, text: "_______________________" },
+    { pointCost: 0, text: "______________________" },
+    { pointCost: 0, text: "______________________" },
+    { pointCost: 0, text: "______________________" },
+    { pointCost: 0, text: "______________________" },
   ],
   Heavy_Food: [
-    { pointCost: 0, text: "_______________________" },
-    { pointCost: 0, text: "_______________________" },
-    { pointCost: 0, text: "_______________________" },
-    { pointCost: 0, text: "_______________________" },
+    { pointCost: 0, text: "______________________" },
+    { pointCost: 0, text: "______________________" },
+    { pointCost: 0, text: "______________________" },
+    { pointCost: 0, text: "______________________" },
   ],
   Demoknight_Shield: [
     {
       pointCost: 0,
-      text: "Alt-Fire: Charge toward your enemies and remove debuffs.",
+      text: "Alt-Fire: Charge toward your enemies and remove debuffs",
     },
   ],
   Banner: [
