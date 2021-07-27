@@ -532,12 +532,6 @@ const weaponEffects = [
   },
   {
     cost: 1,
-    for: weaponTypeGroups.AllAutomatic,
-    pro: "Weapon firing speed increases as it gets fired for longer",
-    con: "Weapon firing speed decreases as it gets fired for longer",
-  },
-  {
-    cost: 1,
     for: weaponTypeGroups.AllBullet,
     pro: "On Headshot: +<value>% damage",
     con: "On Hit: -<value>% damage if the hit wasn't a headshot",
@@ -551,6 +545,24 @@ const weaponEffects = [
     con: "<value>% more bullet spread",
     valuePro: 30,
     valueCon: 30,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllBullet,
+    pro: "Bullets pass through enemies",
+    con: "Bullets cannot pass through allies",
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllBullet,
+    pro: "Reduced falloff damage correction",
+    con: "Increased falloff damage correction",
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllAutomatic,
+    pro: "Weapon firing speed increases as it gets fired for longer",
+    con: "Weapon firing speed decreases as it gets fired for longer",
   },
   {
     cost: 1,
@@ -729,18 +741,6 @@ const weaponEffects = [
     for: weaponTypeGroups.AllDoesDamage,
     pro: "Increased chance of random critical hit",
     con: "No random critical hits",
-  },
-  {
-    cost: 1,
-    for: weaponTypeGroups.AllBullet,
-    pro: "Bullets pass through enemies",
-    con: "Bullets cannot pass through allies",
-  },
-  {
-    cost: 1,
-    for: weaponTypeGroups.AllBullet,
-    pro: "Reduced falloff damage correction",
-    con: "Increased falloff damage correction",
   },
 
   // TODO: Add effects specifically for "BurstBullet"
