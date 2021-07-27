@@ -514,6 +514,7 @@ const mandatoryPros = {
 };
 
 const weaponEffects = [
+  //// AllReloading ////
   {
     cost: 1,
     for: weaponTypeGroups.AllReloading,
@@ -522,6 +523,7 @@ const weaponEffects = [
     valuePro: 20,
     valueCon: 20,
   },
+  //// AllBullet ////
   {
     cost: 1,
     for: weaponTypeGroups.AllBullet,
@@ -558,12 +560,14 @@ const weaponEffects = [
     pro: "Reduced falloff damage correction",
     con: "Increased falloff damage correction",
   },
+  //// AllAutomatic ////
   {
     cost: 1,
     for: weaponTypeGroups.AllAutomatic,
     pro: "Weapon firing speed increases as it gets fired for longer",
     con: "Weapon firing speed decreases as it gets fired for longer",
   },
+  //// AllExplosive ////
   {
     cost: 1,
     for: weaponTypeGroups.AllExplosive,
@@ -588,6 +592,7 @@ const weaponEffects = [
     valuePro: 35,
     valueCon: 35,
   },
+  //// AllProjectile ////
   {
     cost: 1,
     for: weaponTypeGroups.AllProjectile,
@@ -612,6 +617,7 @@ const weaponEffects = [
     valuePro: 30,
     valueCon: 30,
   },
+  //// AllCanHit ////
   {
     cost: 1,
     for: weaponTypeGroups.AllCanHit,
@@ -644,6 +650,7 @@ const weaponEffects = [
     valuePro: 20,
     valueCon: 20,
   },
+  //// All ////
   {
     cost: 1,
     for: weaponTypeGroups.All,
@@ -698,6 +705,7 @@ const weaponEffects = [
     pro: "Can see the HP of enemies",
     con: "Enemies can see your HP",
   },
+  //// AllDoesDamage ////
   {
     cost: 1,
     for: weaponTypeGroups.AllDoesDamage,
@@ -743,31 +751,31 @@ const weaponEffects = [
     con: "No random critical hits",
   },
 
-  // TODO: Add effects specifically for "BurstBullet"
-  // TODO: Add effects specifically for "SingleBullet"
-  // TODO: Add effects specifically for "SemiAutomaticBullet"
-  // TODO: Add effects specifically for "AutomaticBullet"
-  // TODO: Add effects specifically for "AutomaticFlame"
-  // TODO: Add effects specifically for "Projectile"
-  // TODO: Add effects specifically for "AutomaticProjectiles"
-  // TODO: Add effects specifically for "ConsumableProjectile"
-  // TODO: Add effects specifically for "ExplosiveProjectile"
-  // TODO: Add effects specifically for "Medi_Gun"
-  // TODO: Add effects specifically for "Sapper"
-  // TODO: Add effects specifically for "ConsumablePassive"
-  // TODO: Add effects specifically for "ChargeablePassive"
-  // TODO: Add effects specifically for "Passive"
-  // TODO: Add effects specifically for "Melee"
-  // TODO: Add effects specifically for "AllScout"
-  // TODO: Add effects specifically for "AllSoldier"
-  // TODO: Add effects specifically for "AllPyro"
-  // TODO: Add effects specifically for "AllDemoman"
-  // TODO: Add effects specifically for "AllHeavy"
-  // TODO: Add effects specifically for "AllEngineer"
-  // TODO: Add effects specifically for "AllMedic"
-  // TODO: Add effects specifically for "AllSniper"
-  // TODO: Add effects specifically for "AllSpy"
-  // TODO: Add effects specifically for "AllDemoknight"
+  // TODO: //// BurstBullet ////
+  // TODO: //// SingleBullet ////
+  // TODO: //// SemiAutomaticBullet ////
+  // TODO: //// AutomaticBullet ////
+  // TODO: //// AutomaticFlame ////
+  // TODO: //// Projectile ////
+  // TODO: //// AutomaticProjectiles ////
+  // TODO: //// ConsumableProjectile ////
+  // TODO: //// ExplosiveProjectile ////
+  // TODO: //// Medi_Gun ////
+  // TODO: //// Sapper ////
+  // TODO: //// ConsumablePassive ////
+  // TODO: //// ChargeablePassive ////
+  // TODO: //// Passive ////
+  // TODO: //// Melee ////
+  // TODO: //// AllScout ////
+  // TODO: //// AllSoldier ////
+  // TODO: //// AllPyro ////
+  // TODO: //// AllDemoman ////
+  // TODO: //// AllHeavy ////
+  // TODO: //// AllEngineer ////
+  // TODO: //// AllMedic ////
+  // TODO: //// AllSniper ////
+  // TODO: //// AllSpy ////
+  // TODO: //// AllDemoknight ////
 ];
 
 generateBtn.addEventListener("click", () => {
