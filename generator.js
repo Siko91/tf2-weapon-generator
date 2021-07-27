@@ -169,10 +169,10 @@ const weaponTypeGroups = {
   // BASIC GROUPS //
   BurstBullet: ["Scattergun", "Shotgun"],
   SingleBullet: ["Sniper_Rifle"],
-  SemiAutomaticBullet: ["Sniper_Rifle", "Spy_Revolver", "Pistol"],
+  SemiAutomaticBullet: ["Spy_Revolver", "Pistol"],
   AutomaticBullet: ["Minigun", "Submachine_Gun"],
-  AutomaticFlame: ["Flamethrower"],
-  Projectile: ["Bow_and_Arrows", "Flare_Gun"],
+  Flamethrower: ["Flamethrower"],
+  SingleShotProjectile: ["Bow_and_Arrows", "Flare_Gun"],
   AutomaticProjectiles: ["Syringe_Gun"],
   ConsumableProjectile: ["Throwable_AoE", "Throwable_Weapon"],
   ExplosiveProjectile: ["Rocket_Launcher", "Pipe_Launcher", "Sticky_Launcher"],
@@ -204,8 +204,15 @@ weaponTypeGroups.AllExplosive = [
   ...weaponTypeGroups.ExplosiveProjectile,
   "Explosive_Melee",
 ];
+weaponTypeGroups.AllReflectableDamageProjectile = [
+  "Bow_and_Arrows",
+  "Throwable_Weapon",
+  "Rocket_Launcher",
+  "Pipe_Launcher",
+  "Melee_with_Projectile",
+];
 weaponTypeGroups.AllProjectile = [
-  ...weaponTypeGroups.Projectile,
+  ...weaponTypeGroups.SingleShotProjectile,
   ...weaponTypeGroups.AutomaticProjectiles,
   ...weaponTypeGroups.ConsumableProjectile,
   ...weaponTypeGroups.ExplosiveProjectile,
@@ -219,18 +226,24 @@ weaponTypeGroups.AllReloading = [
   ...weaponTypeGroups.AutomaticProjectiles,
   ...weaponTypeGroups.ExplosiveProjectile,
 ];
+weaponTypeGroups.AllHasClip = [
+  ...weaponTypeGroups.SemiAutomaticBullet,
+  "Submachine_Gun",
+  "Syringe_Gun",
+  ...weaponTypeGroups.ExplosiveProjectile,
+];
 weaponTypeGroups.AllWithAmmo = [
   ...weaponTypeGroups.BurstBullet,
   ...weaponTypeGroups.SingleBullet,
   ...weaponTypeGroups.SemiAutomaticBullet,
   ...weaponTypeGroups.AutomaticBullet,
-  ...weaponTypeGroups.AutomaticFlame,
-  ...weaponTypeGroups.Projectile,
+  ...weaponTypeGroups.Flamethrower,
+  ...weaponTypeGroups.SingleShotProjectile,
   ...weaponTypeGroups.AutomaticProjectiles,
 ];
 weaponTypeGroups.AllAutomatic = [
   ...weaponTypeGroups.AutomaticBullet,
-  ...weaponTypeGroups.AutomaticFlame,
+  ...weaponTypeGroups.Flamethrower,
   ...weaponTypeGroups.AutomaticProjectiles,
 ];
 weaponTypeGroups.AllPassive = [
@@ -243,8 +256,8 @@ weaponTypeGroups.AllCanHit = [
   ...weaponTypeGroups.SingleBullet,
   ...weaponTypeGroups.SemiAutomaticBullet,
   ...weaponTypeGroups.AutomaticBullet,
-  ...weaponTypeGroups.AutomaticFlame,
-  ...weaponTypeGroups.Projectile,
+  ...weaponTypeGroups.Flamethrower,
+  ...weaponTypeGroups.SingleShotProjectile,
   ...weaponTypeGroups.AutomaticProjectiles,
   ...weaponTypeGroups.ConsumableProjectile,
   ...weaponTypeGroups.ExplosiveProjectile,
@@ -255,19 +268,20 @@ weaponTypeGroups.AllDoesDamage = [
   ...weaponTypeGroups.SingleBullet,
   ...weaponTypeGroups.SemiAutomaticBullet,
   ...weaponTypeGroups.AutomaticBullet,
-  ...weaponTypeGroups.AutomaticFlame,
-  ...weaponTypeGroups.Projectile,
+  ...weaponTypeGroups.Flamethrower,
+  ...weaponTypeGroups.SingleShotProjectile,
   ...weaponTypeGroups.AutomaticProjectiles,
   ...weaponTypeGroups.ExplosiveProjectile,
   ...weaponTypeGroups.Melee,
 ];
+weaponTypeGroups.AllAfterburn = ["Flamethrower", "Flare_Gun"];
 weaponTypeGroups.All = [
   ...weaponTypeGroups.BurstBullet,
   ...weaponTypeGroups.SingleBullet,
   ...weaponTypeGroups.SemiAutomaticBullet,
   ...weaponTypeGroups.AutomaticBullet,
-  ...weaponTypeGroups.AutomaticFlame,
-  ...weaponTypeGroups.Projectile,
+  ...weaponTypeGroups.Flamethrower,
+  ...weaponTypeGroups.SingleShotProjectile,
   ...weaponTypeGroups.AutomaticProjectiles,
   ...weaponTypeGroups.ConsumableProjectile,
   ...weaponTypeGroups.ExplosiveProjectile,
@@ -592,31 +606,6 @@ const weaponEffects = [
     valuePro: 35,
     valueCon: 35,
   },
-  //// AllProjectile ////
-  {
-    cost: 1,
-    for: weaponTypeGroups.AllProjectile,
-    pro: "<value>% faster projectile speed",
-    con: "<value>% slower projectile speed",
-    valuePro: 40,
-    valueCon: 40,
-  },
-  {
-    cost: 1,
-    for: weaponTypeGroups.AllProjectile,
-    pro: "Projectile cannot be reflected",
-    con: "Projectile deals 100% crit damage when reflected",
-    valuePro: 30,
-    valueCon: 30,
-  },
-  {
-    cost: 1,
-    for: weaponTypeGroups.AllProjectile,
-    pro: "Projectile cannot be reflected",
-    con: "Projectile deals 100% crit damage when reflected",
-    valuePro: 30,
-    valueCon: 30,
-  },
   //// AllCanHit ////
   {
     cost: 1,
@@ -750,20 +739,287 @@ const weaponEffects = [
     pro: "Increased chance of random critical hit",
     con: "No random critical hits",
   },
-
-  // TODO: //// BurstBullet ////
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllDoesDamage,
+    pro: "On Hit: +<value>% more damage when attacking from behind the enemy",
+    con: "On Hit: -<value>% less damage when not attacking from behind the enemy",
+    valuePro: 10,
+    valueCon: 10,
+  },
+  //// AllHasClip ////
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllHasClip,
+    pro: "+<value>% larger clip size",
+    con: "-<value>% smaller clip size",
+    valuePro: 20,
+    valueCon: 20,
+  },
+  //// BurstBullet ////
+  {
+    cost: 1,
+    for: weaponTypeGroups.BurstBullet,
+    pro: "Bullets fire in a fixed pattern",
+    con: "Bullets fire with increased random spread",
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.BurstBullet,
+    pro: "On Hit: Do +<value>% damage if every single bullet connects to the same enemy",
+    con: "On Hit: -<value>% damage if even one bullet missed the enemy",
+    valuePro: 20,
+    valueCon: 20,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.BurstBullet,
+    pro: "On Hit: Heal <value> HP per connecting bullet",
+    con: "On Shot: Mini explosion in your hands - lose <value> HP from bleeding",
+    valuePro: 2,
+    valueCon: 2,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.BurstBullet,
+    pro: "+<value>% more bullets per shot",
+    con: "-<value>% less bullets per shot",
+    valuePro: 20,
+    valueCon: 20,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.BurstBullet,
+    pro: "On Hit: If all bullets connect, deals additional bleed damage as strong as <value>% of the attack",
+    con: "On Miss: Bleed losing -<value> HP",
+    valuePro: 30,
+    valueCon: 10,
+  },
   // TODO: //// SingleBullet ////
-  // TODO: //// SemiAutomaticBullet ////
-  // TODO: //// AutomaticBullet ////
-  // TODO: //// AutomaticFlame ////
-  // TODO: //// Projectile ////
-  // TODO: //// AutomaticProjectiles ////
-  // TODO: //// ConsumableProjectile ////
-  // TODO: //// ExplosiveProjectile ////
+  {
+    cost: 1,
+    for: weaponTypeGroups.SingleBullet,
+    pro: "On Headshot: Next reload will be <value>% faster",
+    con: "On Miss: Next reload will be <value>% slower",
+    valuePro: 50,
+    valueCon: 50,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.SingleBullet,
+    pro: "On Headshot: Deal +<value>% damage",
+    con: "On Hit: Deal -<value>% damage if hit was not a headshot",
+    valuePro: 20,
+    valueCon: 20,
+  },
+  //// SemiAutomaticBullet ////
+  {
+    cost: 1,
+    for: weaponTypeGroups.SemiAutomaticBullet,
+    pro: "+<value>% faster firing rate when shooting bullets individually (1-press, 1-bullet)",
+    con: "-<value>% slower firing rate when shooting bullets by holding the trigger (1-press, many bullets)",
+    valuePro: 20,
+    valueCon: 20,
+  },
+  //// Minigun ////
+  {
+    cost: 1,
+    for: ["Minigun"],
+    pro: "Weapon slowly restores ammo when revved up without shooting. (But produces louder noise)",
+    con: "Weapon cannot be revved up without shooting",
+  },
+  {
+    cost: 1,
+    for: ["Minigun"],
+    pro: "+<value>% increased walking speed while revved up",
+    con: "-<value>% decreased walking speed while revved up",
+    valuePro: 20,
+    valueCon: 20,
+  },
+  //// Flamethrower ////
+  {
+    cost: 1,
+    for: weaponTypeGroups.Flamethrower,
+    pro: "Deals +<value>% more damage when burning the enemy from behind",
+    con: "Deals -<value>% more damage when not burning the enemy from behind",
+    valuePro: 20,
+    valueCon: 20,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.Flamethrower,
+    pro: "Flames linger in the air for <value> second(s)",
+    con: "Flames linger in the air for <value> second(s), but passing through them deals mini-crit damage to you",
+    valuePro: 1,
+    valueCon: 1,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.Flamethrower,
+    pro: "Flames reach is +<value>% farther",
+    con: "Flames reach is -<value>% shorter",
+    valuePro: 20,
+    valueCon: 20,
+  },
+  //// AllAfterburn ////
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllAfterburn,
+    pro: "+<value>% increased afterburn damage",
+    con: "-<value>% decreased afterburn damage",
+    valuePro: 20,
+    valueCon: 20,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllAfterburn,
+    pro: "+<value>% increased afterburn duration",
+    con: "-<value>% decreased afterburn duration",
+    valuePro: 50,
+    valueCon: 50,
+  },
+  //// AllProjectile ////
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllProjectile,
+    pro: "<value>% faster projectile speed",
+    con: "<value>% slower projectile speed",
+    valuePro: 40,
+    valueCon: 40,
+  },
+  // TODO: //// SingleShotProjectile ////
+  {
+    cost: 1,
+    for: weaponTypeGroups.SingleShotProjectile,
+    pro: "On Hit: Loading next shot will be +<value>% faster",
+    con: "On Miss: Loading next shot will be -<value>% slower",
+    valuePro: 50,
+    valueCon: 50,
+  },
+  //// AllReflectableDamageProjectile ////
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllReflectableDamageProjectile,
+    pro: "Projectile cannot be reflected",
+    con: "Projectile deals 100% crit damage when reflected",
+    valuePro: 30,
+    valueCon: 30,
+  },
+  //// AutomaticProjectiles ////
+  {
+    cost: 1,
+    for: weaponTypeGroups.AutomaticProjectiles,
+    pro: "Consecutive hits deal +<value> more damage than the previous hit",
+    con: "Consecutive hits deal -<value> less damage than the previous hit",
+    valuePro: 1,
+    valueCon: 1,
+  },
+  //// ConsumableProjectile ////
+  {
+    cost: 1,
+    for: weaponTypeGroups.ConsumableProjectile,
+    pro: "+<value>% faster recharge time",
+    con: "-<value>% slower recharge time",
+    valuePro: 40,
+    valueCon: 40,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.ConsumableProjectile,
+    pro: "+<value>% increased movement speed after launching the projectile for 4 seconds",
+    con: "-<value>% decreased movement speed after launching the projectile for 4 seconds",
+    valuePro: 15,
+    valueCon: 15,
+  },
+  //// Rocket_Launcher, Pipe_Launcher ////
+  {
+    cost: 1,
+    for: ["Rocket_Launcher", "Pipe_Launcher"],
+    pro: "Projectile explodes on direct hit, but also bounces off from the enemy to explode again when hitting any surface, dealing <value>% damage",
+    pro: "Projectile does not explode on direct hit, but instead bounces off from the enemy to explode when hitting any surface, dealing <value>% damage",
+    valuePro: 40,
+    valueCon: 60,
+  },
+  {
+    cost: 1,
+    for: ["Rocket_Launcher", "Pipe_Launcher"],
+    pro: "Projectile can bounce on terrain once and still direct hit the enemy. It breaks apart if it touches terrain for a second time",
+    pro: "Projectile breaks apart if it touches terrain",
+    valuePro: 50,
+    valueCon: 50,
+  },
   // TODO: //// Medi_Gun ////
-  // TODO: //// Sapper ////
-  // TODO: //// ConsumablePassive ////
-  // TODO: //// ChargeablePassive ////
+  {
+    cost: 1,
+    for: ["Medi_Gun"],
+    pro: "Accumulate ÜberCharge +<value>% faster",
+    pro: "Accumulate ÜberCharge -<value>% slower",
+    valuePro: 15,
+    valueCon: 15,
+  },
+  {
+    cost: 1,
+    for: ["Medi_Gun"],
+    pro: "Heal +<value>% more HP per second",
+    pro: "Heal -<value>% less HP per second",
+    valuePro: 10,
+    valueCon: 10,
+  },
+  {
+    cost: 1,
+    for: ["Medi_Gun"],
+    pro: "Heals teammates near to the Medi Gun target for <value>% of the target healing",
+    pro: "Drains HP from teammates near to the Medi Gun target for <value>% of the target, if health of these teammates is more than 50",
+    valuePro: 10,
+    valueCon: 10,
+  },
+  //// Sapper ////
+  {
+    cost: 1,
+    for: ["Sapper"],
+    pro: "Sapped buildings are disabled for <value> seconds after the sapper is removed",
+    pro: "Sapped buildings are not disabled for <value> seconds after the sapper is placed",
+    valuePro: 2,
+    valueCon: 2,
+  },
+  {
+    cost: 1,
+    for: ["Sapper"],
+    pro: "Alt-Fire: Can throw sapper from a distance, but cannot apply sapper for 4 seconds after that",
+    pro: "After applying sapper, cannot apply again for 2 seconds",
+  },
+  {
+    cost: 1,
+    for: ["Sapper"],
+    pro: "Can apply sapper while invisible",
+    pro: "Cannot apply sapper while disguised",
+  },
+  //// ConsumablePassive ////
+  {
+    cost: 1,
+    for: weaponTypeGroups.ConsumableProjectile,
+    pro: "+<value>% faster recharge rate",
+    con: "-<value>% slower recharge rate",
+    valuePro: 25,
+    valueCon: 25,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.ConsumableProjectile,
+    pro: "+<value>% faster usage time",
+    con: "-<value>% slower usage time",
+    valuePro: 50,
+    valueCon: 50,
+  },
+  //// ChargeablePassive ////
+  {
+    cost: 1,
+    for: weaponTypeGroups.ConsumableProjectile,
+    pro: "Charge requires -<value>% less time",
+    con: "Charge requires +<value>% more time",
+    valuePro: 30,
+    valueCon: 30,
+  },
   // TODO: //// Passive ////
   // TODO: //// Melee ////
   // TODO: //// AllScout ////
