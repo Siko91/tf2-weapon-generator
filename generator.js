@@ -127,8 +127,8 @@ const weaponTypesByClass = [
     { slot: 2, type: weaponTypes.Heavy_Food },
     { slot: 3, type: weaponTypes.Melee },
   ],
-  // Engineer
   [
+    // Engineer
     { slot: 1, type: weaponTypes.Shotgun },
     { slot: 2, type: weaponTypes.Pistol },
     { slot: 2, type: weaponTypes.Backpack },
@@ -606,13 +606,6 @@ const weaponEffects = [
   },
   {
     for: weaponTypeGroups.AllCanHit,
-    pro: "On Hit: Receive a small speed boost for <value> seconds",
-    con: "On Miss: Receive a small slow run debuf for <value> seconds",
-    valuePro: 3,
-    valueCon: 3,
-  },
-  {
-    for: weaponTypeGroups.AllCanHit,
     pro: "On Hit Teammate: Grant <value>% faster firing rate to both for 4 seconds",
     con: "On Miss: <value>% slower firing rate for the next 4 seconds",
     valuePro: 30,
@@ -667,14 +660,22 @@ const weaponEffects = [
     valueCon: 10,
   },
   {
-    for: weaponTypeGroups.All,
+    for: [...weaponTypeGroups.All].filter(
+      (i) => !weaponTypeGroups.Passive.includes(i)
+    ),
     pro: "This weapon deploys <value>% faster",
     con: "This weapon deploys <value>% slower",
     valuePro: 40,
     valueCon: 40,
   },
   {
-    for: weaponTypeGroups.All,
+    for: [...weaponTypeGroups.All].filter(
+      (i) =>
+        i !== "Spy_Revolver" &&
+        i !== "Sapper" &&
+        i !== "Backstabbing_Melee" &&
+        i !== "Invis_Watch"
+    ),
     pro: "Can see the HP of enemies",
     con: "Enemies can see your HP",
   },
@@ -781,9 +782,9 @@ const weaponEffects = [
     valuePro: 20,
     valueCon: 20,
   },
-  //// SemiAutomaticBullet ////
+  //// Pistol, Submachine_Gun ////
   {
-    for: weaponTypeGroups.SemiAutomaticBullet,
+    for: ["Pistol", "Submachine_Gun"],
     pro: "+<value>% faster firing rate when shooting bullets individually (1-press, 1-bullet)",
     con: "-<value>% slower firing rate when shooting bullets by holding the trigger (1-press, many bullets)",
     valuePro: 20,
@@ -964,7 +965,7 @@ const weaponEffects = [
     valuePro: 30,
     valueCon: 30,
   },
-  // TODO: //// Passive ////
+  //// Passive ////
   {
     for: weaponTypeGroups.Passive,
     pro: "+<value>% more effective healing from medics",
@@ -1050,7 +1051,7 @@ const weaponEffects = [
     pro: "Sniper Rifle light pointers will become more visible and will also show the general direction of the sniper position",
     con: "Sniper Rifle light pointers will become invisible to you",
   },
-  // TODO: //// AllEngineer ////
+  //// AllEngineer ////
   {
     for: weaponTypeGroups.AllEngineer,
     classLimit: ["Engineer"],
@@ -1099,7 +1100,7 @@ const weaponEffects = [
     pro: "Spy backstabs will deal only 90 damage to you",
     con: "Any damage from a spy knife will count as a successful backstab",
   },
-  // TODO: //// AllSpy ////
+  //// AllSpy ////
   {
     for: weaponTypeGroups.AllSpy,
     classLimit: ["Spy"],
@@ -1271,9 +1272,14 @@ function addWeaponProsAndCons(weapon) {
   );
 }
 
-function selectRandomIndexes(collectionSize, countToSelect, forbiddenIndexes) {
+function selectRandomIndexes(
+  collectionSize,
+  countToSelect,
+  forbiddenIndexes,
+  maxAttempts = 100
+) {
   const indexes = [];
-  while (indexes.length < countToSelect) {
+  while (indexes.length < countToSelect && maxAttempts-- > 0) {
     const index = getRandom(0, collectionSize - 1);
     if (indexes.includes(index) || forbiddenIndexes.includes(index)) continue;
     indexes.push(index);
@@ -1296,6 +1302,26 @@ function cloneJson(obj) {
   return JSON.parse(JSON.stringify(obj));
 }
 
-function formatWeaponAsHtml(weaponObject) {
-  return JSON.stringify(weaponObject, null, 2).replace(/\n/g, "<br>");
+function formatWeaponAsHtml(weapon) {
+  return [
+    `<div id="weapon">`,
+    `  <div id="weaponImage"> <img src="" /> </div>`,
+    `  <div id="weaponName" class="my-3">New ${weapon.weaponSlotName} for the ${weapon.playerClassName}</div>`,
+    `  <div id="weaponStats" class="my-3">`,
+    `    <div id="weaponLevel">`,
+    `      Level ${getRandom(10, 50)}`,
+    `      ${weapon.type.replace(/_/g, " ")}`,
+    `    </div>`,
+    `    <div id="weaponMandatoryStats" class="my-3">`,
+    (weapon.mandatoryPros || []).map((i) => `<div>${i}</div>`).join(""),
+    `    </div>`,
+    `    <div id="weaponPros" class="my-3">`,
+    (weapon.pros || []).map((i) => `<div>${i}</div>`).join(""),
+    `    </div>`,
+    `    <div id="weaponCons" class="my-3">`,
+    (weapon.cons || []).map((i) => `<div>${i}</div>`).join(""),
+    `    </div>`,
+    `  </div>`,
+    `</div>`,
+  ].join(" ");
 }
