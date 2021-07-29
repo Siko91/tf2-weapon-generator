@@ -942,7 +942,7 @@ const weaponEffects = [
     cost: 1,
     for: ["Rocket_Launcher", "Pipe_Launcher"],
     pro: "Projectile explodes on direct hit, but also bounces off from the enemy to explode again when hitting any surface, dealing <value>% damage",
-    pro: "Projectile does not explode on direct hit, but instead bounces off from the enemy to explode when hitting any surface, dealing <value>% damage",
+    con: "Projectile does not explode on direct hit, but instead bounces off from the enemy to explode when hitting any surface, dealing <value>% damage",
     valuePro: 40,
     valueCon: 60,
   },
@@ -950,7 +950,7 @@ const weaponEffects = [
     cost: 1,
     for: ["Rocket_Launcher", "Pipe_Launcher"],
     pro: "Projectile can bounce on terrain once and still direct hit the enemy. It breaks apart if it touches terrain for a second time",
-    pro: "Projectile breaks apart if it touches terrain",
+    con: "Projectile breaks apart if it touches terrain",
     valuePro: 50,
     valueCon: 50,
   },
@@ -959,7 +959,7 @@ const weaponEffects = [
     cost: 1,
     for: ["Medi_Gun"],
     pro: "Accumulate ÜberCharge +<value>% faster",
-    pro: "Accumulate ÜberCharge -<value>% slower",
+    con: "Accumulate ÜberCharge -<value>% slower",
     valuePro: 15,
     valueCon: 15,
   },
@@ -967,7 +967,7 @@ const weaponEffects = [
     cost: 1,
     for: ["Medi_Gun"],
     pro: "Heal +<value>% more HP per second",
-    pro: "Heal -<value>% less HP per second",
+    con: "Heal -<value>% less HP per second",
     valuePro: 10,
     valueCon: 10,
   },
@@ -975,7 +975,7 @@ const weaponEffects = [
     cost: 1,
     for: ["Medi_Gun"],
     pro: "Heals teammates near to the Medi Gun target for <value>% of the target healing",
-    pro: "Drains HP from teammates near to the Medi Gun target for <value>% of the target, if health of these teammates is more than 50",
+    con: "Drains HP from teammates near to the Medi Gun target for <value>% of the target, if health of these teammates is more than 50",
     valuePro: 10,
     valueCon: 10,
   },
@@ -984,7 +984,7 @@ const weaponEffects = [
     cost: 1,
     for: ["Sapper"],
     pro: "Sapped buildings are disabled for <value> seconds after the sapper is removed",
-    pro: "Sapped buildings are not disabled for <value> seconds after the sapper is placed",
+    con: "Sapped buildings are not disabled for <value> seconds after the sapper is placed",
     valuePro: 2,
     valueCon: 2,
   },
@@ -992,13 +992,13 @@ const weaponEffects = [
     cost: 1,
     for: ["Sapper"],
     pro: "Alt-Fire: Can throw sapper from a distance, but cannot apply sapper for 4 seconds after that",
-    pro: "After applying sapper, cannot apply again for 2 seconds",
+    con: "After applying sapper, cannot apply again for 2 seconds",
   },
   {
     cost: 1,
     for: ["Sapper"],
     pro: "Can apply sapper while invisible",
-    pro: "Cannot apply sapper while disguised",
+    con: "Cannot apply sapper while disguised",
   },
   //// ConsumablePassive ////
   {
@@ -1042,14 +1042,6 @@ const weaponEffects = [
     con: "Overheal can give you -<value>% less max HP",
     valuePro: 15,
     valueCon: 15,
-  },
-  {
-    cost: 1,
-    for: weaponTypeGroups.Passive,
-    pro: "+<value>% max HP",
-    con: "-<value>% max HP",
-    valuePro: 20,
-    valueCon: 20,
   },
   {
     cost: 1,
@@ -1313,6 +1305,7 @@ function generateWeapon(playerClass, weaponSlot, powerLevel) {
     type: weaponType.name,
     proPoints: modificationCounts + proBoost,
     conPoints: modificationCounts + conBoost,
+    mandatoryPros: [],
     pros: [],
     cons: [],
   };
@@ -1329,7 +1322,7 @@ function addMandatoryPro(weapon) {
   const selectedPro =
     mandatoryProOptions[getRandom(0, mandatoryProOptions.length - 1)];
 
-  weapon.pros.push(selectedPro.text);
+  weapon.mandatoryPros.push(selectedPro.text);
   weapon.proPoints -= selectedPro.pointCost;
 
   if (weapon.proPoints < 0) {
@@ -1339,16 +1332,42 @@ function addMandatoryPro(weapon) {
 }
 
 function addWeaponProsAndCons(weapon) {
-  // TODO: Implement a way to select pros and cons for a weapon
-  //      - 1 - count how many pros and cons we need combined
-  //      - 2 - filter all effect options that can be applied to this weapon
-  //      - 3 - select pros and cons randomly from the options
-  //      - 4 - a pro option and a con option cannot be the same
-  //      - 5 - if pro or con options were repeated and cannot be combined - replace the repeat
-  //      - 6 - if pro or con options were repeated and they can be combined - combine them
-  //      - 7 - add some randomness to all options that have values
-  //      - 8 - add the pros and cons to the weapon
-  //      - 9 - done!
+  const possibleOptions = cloneJson(
+    weaponEffects
+      .filter((i) => i.for.includes(weapon.type))
+      .filter((i) => !i.classLimit || i.classLimit === weapon.playerClassName)
+  );
+
+  const selectedProIndexes = selectRandomIndexes(
+    possibleOptions.length,
+    weapon.proPoints,
+    []
+  );
+  const selectedConIndexes = selectRandomIndexes(
+    possibleOptions.length,
+    weapon.conPoints,
+    selectedProIndexes
+  );
+
+  const selectedPros = selectedProIndexes.map((i) => possibleOptions[i]);
+  const selectedCons = selectedConIndexes.map((i) => possibleOptions[i]);
+
+  weapon.pros.push(
+    ...selectedPros.map((i) => i.pro.replace("<value>", i.valuePro))
+  );
+  weapon.cons.push(
+    ...selectedCons.map((i) => i.con.replace("<value>", i.valueCon))
+  );
+}
+
+function selectRandomIndexes(collectionSize, countToSelect, forbiddenIndexes) {
+  const indexes = [];
+  while (indexes.length < countToSelect) {
+    const index = getRandom(0, collectionSize - 1);
+    if (indexes.includes(index) || forbiddenIndexes.includes(index)) continue;
+    indexes.push(index);
+  }
+  return indexes;
 }
 
 function selectWeaponType(playerClass, weaponSlot, powerLevel) {
