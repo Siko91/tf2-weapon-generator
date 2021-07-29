@@ -530,7 +530,6 @@ const mandatoryPros = {
 const weaponEffects = [
   //// AllReloading ////
   {
-    cost: 1,
     for: weaponTypeGroups.AllReloading,
     pro: "<value>% faster reload speed",
     con: "<value>% slower reload speed",
@@ -539,7 +538,6 @@ const weaponEffects = [
   },
   //// AllBullet ////
   {
-    cost: 1,
     for: weaponTypeGroups.AllBullet,
     pro: "On Headshot: +<value>% damage",
     con: "On Hit: -<value>% damage if the hit wasn't a headshot",
@@ -547,7 +545,6 @@ const weaponEffects = [
     valueCon: 10,
   },
   {
-    cost: 1,
     for: weaponTypeGroups.AllBullet,
     pro: "On Headshot: +<value>% damage",
     con: "On Hit: -<value>% damage if the hit wasn't a headshot",
@@ -555,7 +552,6 @@ const weaponEffects = [
     valueCon: 10,
   },
   {
-    cost: 1,
     for: weaponTypeGroups.AllBullet,
     pro: "<value>% less bullet spread",
     con: "<value>% more bullet spread",
@@ -563,27 +559,23 @@ const weaponEffects = [
     valueCon: 30,
   },
   {
-    cost: 1,
     for: weaponTypeGroups.AllBullet,
     pro: "Bullets pass through enemies",
     con: "Bullets cannot pass through allies",
   },
   {
-    cost: 1,
     for: weaponTypeGroups.AllBullet,
     pro: "Reduced falloff damage correction",
     con: "Increased falloff damage correction",
   },
   //// AllAutomatic ////
   {
-    cost: 1,
     for: weaponTypeGroups.AllAutomatic,
     pro: "Weapon firing speed increases as it gets fired for longer",
     con: "Weapon firing speed decreases as it gets fired for longer",
   },
   //// AllExplosive ////
   {
-    cost: 1,
     for: weaponTypeGroups.AllExplosive,
     pro: "<value>% larger explosion radius",
     con: "<value>% smaller explosion radius",
@@ -591,7 +583,6 @@ const weaponEffects = [
     valueCon: 20,
   },
   {
-    cost: 1,
     for: weaponTypeGroups.AllExplosive,
     pro: "<value>% stronger explosion knockback",
     con: "<value>% weaker explosion knockback",
@@ -599,7 +590,6 @@ const weaponEffects = [
     valueCon: 50,
   },
   {
-    cost: 1,
     for: weaponTypeGroups.AllExplosive,
     pro: "<value>% less damage to self",
     con: "<value>% more damage to self",
@@ -608,7 +598,6 @@ const weaponEffects = [
   },
   //// AllCanHit ////
   {
-    cost: 1,
     for: weaponTypeGroups.AllCanHit,
     pro: "On Hit: +<value> HP",
     con: "On Miss: -<value> HP",
@@ -616,7 +605,6 @@ const weaponEffects = [
     valueCon: 15,
   },
   {
-    cost: 1,
     for: weaponTypeGroups.AllCanHit,
     pro: "On Hit: Receive a small speed boost for <value> seconds",
     con: "On Miss: Receive a small slow run debuf for <value> seconds",
@@ -624,7 +612,6 @@ const weaponEffects = [
     valueCon: 3,
   },
   {
-    cost: 1,
     for: weaponTypeGroups.AllCanHit,
     pro: "On Hit Teammate: Grant <value>% faster firing rate to both for 4 seconds",
     con: "On Miss: <value>% slower firing rate for the next 4 seconds",
@@ -632,7 +619,6 @@ const weaponEffects = [
     valueCon: 15,
   },
   {
-    cost: 1,
     for: weaponTypeGroups.AllCanHit,
     pro: "On Hit: Enemy moves <value>% slower for 3 seconds",
     con: "On Miss: You move <value>% slower for 3 seconds",
@@ -641,7 +627,6 @@ const weaponEffects = [
   },
   //// All ////
   {
-    cost: 1,
     for: weaponTypeGroups.All,
     pro: "+<value> Max HP",
     con: "-<value> Max HP",
@@ -649,7 +634,6 @@ const weaponEffects = [
     valueCon: 30,
   },
   {
-    cost: 1,
     for: weaponTypeGroups.All,
     pro: "+<value>% Max HP",
     con: "-<value>% Max HP",
@@ -657,13 +641,11 @@ const weaponEffects = [
     valueCon: 20,
   },
   {
-    cost: 1,
     for: weaponTypeGroups.All,
     pro: "Increased air-strafing control",
     con: "Decreased air-strafing control",
   },
   {
-    cost: 1,
     for: weaponTypeGroups.All,
     pro: "+<value>% ammo on all weapons",
     con: "-<value>% ammo on all weapons",
@@ -671,7 +653,6 @@ const weaponEffects = [
     valueCon: 30,
   },
   {
-    cost: 1,
     for: weaponTypeGroups.All,
     pro: "Heals up to +<value> HP per second, while not taking damage",
     con: "Bleeds up to -<value> HP per second, after not receiving healing for a while",
@@ -679,7 +660,6 @@ const weaponEffects = [
     valueCon: 3,
   },
   {
-    cost: 1,
     for: weaponTypeGroups.All,
     pro: "<value>% faster running speed",
     con: "<value>% slower running speed",
@@ -687,7 +667,6 @@ const weaponEffects = [
     valueCon: 10,
   },
   {
-    cost: 1,
     for: weaponTypeGroups.All,
     pro: "This weapon deploys <value>% faster",
     con: "This weapon deploys <value>% slower",
@@ -695,14 +674,12 @@ const weaponEffects = [
     valueCon: 40,
   },
   {
-    cost: 1,
     for: weaponTypeGroups.All,
     pro: "Can see the HP of enemies",
     con: "Enemies can see your HP",
   },
   //// AllDoesDamage ////
   {
-    cost: 1,
     for: weaponTypeGroups.AllDoesDamage,
     pro: "+<value>% damage increase",
     con: "-<value>% damage penalty",
@@ -710,7 +687,6 @@ const weaponEffects = [
     valueCon: 20,
   },
   {
-    cost: 1,
     for: weaponTypeGroups.AllDoesDamage,
     pro: "On Hit: Causes enemy to bleed for <value> seconds",
     con: "On Miss: Causes you to bleed for <value> seconds",
@@ -718,7 +694,6 @@ const weaponEffects = [
     valueCon: 2,
   },
   {
-    cost: 1,
     for: weaponTypeGroups.AllDoesDamage,
     pro: "On Hit: Makes enemies unable to switch weapons for <value> seconds",
     con: "On Miss: Makes you unable to switch weapons for <value> seconds",
@@ -726,7 +701,6 @@ const weaponEffects = [
     valueCon: 3,
   },
   {
-    cost: 1,
     for: weaponTypeGroups.AllDoesDamage,
     pro: "On Hit: Makes enemies unable to reload weapons for <value> seconds",
     con: "On Miss: Makes you unable to reload weapons for <value> seconds",
@@ -734,19 +708,16 @@ const weaponEffects = [
     valueCon: 3,
   },
   {
-    cost: 1,
     for: weaponTypeGroups.AllDoesDamage,
     pro: "Crits whenever it would normally mini-crit",
     con: "Cannot Crit",
   },
   {
-    cost: 1,
     for: weaponTypeGroups.AllDoesDamage,
     pro: "Increased chance of random critical hit",
     con: "No random critical hits",
   },
   {
-    cost: 1,
     for: weaponTypeGroups.AllDoesDamage,
     pro: "On Hit: +<value>% more damage when attacking from behind the enemy",
     con: "On Hit: -<value>% less damage when not attacking from behind the enemy",
@@ -755,7 +726,6 @@ const weaponEffects = [
   },
   //// AllHasClip ////
   {
-    cost: 1,
     for: weaponTypeGroups.AllHasClip,
     pro: "+<value>% larger clip size",
     con: "-<value>% smaller clip size",
@@ -764,13 +734,11 @@ const weaponEffects = [
   },
   //// BurstBullet ////
   {
-    cost: 1,
     for: weaponTypeGroups.BurstBullet,
     pro: "Bullets fire in a fixed pattern",
     con: "Bullets fire with increased random spread",
   },
   {
-    cost: 1,
     for: weaponTypeGroups.BurstBullet,
     pro: "On Hit: Do +<value>% damage if every single bullet connects to the same enemy",
     con: "On Hit: -<value>% damage if even one bullet missed the enemy",
@@ -778,7 +746,6 @@ const weaponEffects = [
     valueCon: 20,
   },
   {
-    cost: 1,
     for: weaponTypeGroups.BurstBullet,
     pro: "On Hit: Heal <value> HP per connecting bullet",
     con: "On Shot: Mini explosion in your hands - lose <value> HP from bleeding",
@@ -786,7 +753,6 @@ const weaponEffects = [
     valueCon: 2,
   },
   {
-    cost: 1,
     for: weaponTypeGroups.BurstBullet,
     pro: "+<value>% more bullets per shot",
     con: "-<value>% less bullets per shot",
@@ -794,7 +760,6 @@ const weaponEffects = [
     valueCon: 20,
   },
   {
-    cost: 1,
     for: weaponTypeGroups.BurstBullet,
     pro: "On Hit: If all bullets connect, deals additional bleed damage as strong as <value>% of the attack",
     con: "On Miss: Bleed losing -<value> HP",
@@ -803,7 +768,6 @@ const weaponEffects = [
   },
   // TODO: //// SingleBullet ////
   {
-    cost: 1,
     for: weaponTypeGroups.SingleBullet,
     pro: "On Headshot: Next reload will be <value>% faster",
     con: "On Miss: Next reload will be <value>% slower",
@@ -811,7 +775,6 @@ const weaponEffects = [
     valueCon: 50,
   },
   {
-    cost: 1,
     for: weaponTypeGroups.SingleBullet,
     pro: "On Headshot: Deal +<value>% damage",
     con: "On Hit: Deal -<value>% damage if hit was not a headshot",
@@ -820,7 +783,6 @@ const weaponEffects = [
   },
   //// SemiAutomaticBullet ////
   {
-    cost: 1,
     for: weaponTypeGroups.SemiAutomaticBullet,
     pro: "+<value>% faster firing rate when shooting bullets individually (1-press, 1-bullet)",
     con: "-<value>% slower firing rate when shooting bullets by holding the trigger (1-press, many bullets)",
@@ -829,13 +791,11 @@ const weaponEffects = [
   },
   //// Minigun ////
   {
-    cost: 1,
     for: ["Minigun"],
     pro: "Weapon slowly restores ammo when revved up without shooting. (But produces louder noise)",
     con: "Weapon cannot be revved up without shooting",
   },
   {
-    cost: 1,
     for: ["Minigun"],
     pro: "+<value>% increased walking speed while revved up",
     con: "-<value>% decreased walking speed while revved up",
@@ -844,7 +804,6 @@ const weaponEffects = [
   },
   //// Flamethrower ////
   {
-    cost: 1,
     for: weaponTypeGroups.Flamethrower,
     pro: "Deals +<value>% more damage when burning the enemy from behind",
     con: "Deals -<value>% more damage when not burning the enemy from behind",
@@ -852,7 +811,6 @@ const weaponEffects = [
     valueCon: 20,
   },
   {
-    cost: 1,
     for: weaponTypeGroups.Flamethrower,
     pro: "Flames linger in the air for <value> second(s)",
     con: "Flames linger in the air for <value> second(s), but passing through them deals mini-crit damage to you",
@@ -860,7 +818,6 @@ const weaponEffects = [
     valueCon: 1,
   },
   {
-    cost: 1,
     for: weaponTypeGroups.Flamethrower,
     pro: "Flames reach is +<value>% farther",
     con: "Flames reach is -<value>% shorter",
@@ -869,7 +826,6 @@ const weaponEffects = [
   },
   //// AllAfterburn ////
   {
-    cost: 1,
     for: weaponTypeGroups.AllAfterburn,
     pro: "+<value>% increased afterburn damage",
     con: "-<value>% decreased afterburn damage",
@@ -877,7 +833,6 @@ const weaponEffects = [
     valueCon: 20,
   },
   {
-    cost: 1,
     for: weaponTypeGroups.AllAfterburn,
     pro: "+<value>% increased afterburn duration",
     con: "-<value>% decreased afterburn duration",
@@ -886,7 +841,6 @@ const weaponEffects = [
   },
   //// AllProjectile ////
   {
-    cost: 1,
     for: weaponTypeGroups.AllProjectile,
     pro: "<value>% faster projectile speed",
     con: "<value>% slower projectile speed",
@@ -895,7 +849,6 @@ const weaponEffects = [
   },
   // TODO: //// SingleShotProjectile ////
   {
-    cost: 1,
     for: weaponTypeGroups.SingleShotProjectile,
     pro: "On Hit: Loading next shot will be +<value>% faster",
     con: "On Miss: Loading next shot will be -<value>% slower",
@@ -904,7 +857,6 @@ const weaponEffects = [
   },
   //// AllReflectableDamageProjectile ////
   {
-    cost: 1,
     for: weaponTypeGroups.AllReflectableDamageProjectile,
     pro: "Projectile cannot be reflected",
     con: "Projectile deals 100% crit damage when reflected",
@@ -913,7 +865,6 @@ const weaponEffects = [
   },
   //// AutomaticProjectiles ////
   {
-    cost: 1,
     for: weaponTypeGroups.AutomaticProjectiles,
     pro: "Consecutive hits deal +<value> more damage than the previous hit",
     con: "Consecutive hits deal -<value> less damage than the previous hit",
@@ -922,7 +873,6 @@ const weaponEffects = [
   },
   //// ConsumableProjectile ////
   {
-    cost: 1,
     for: weaponTypeGroups.ConsumableProjectile,
     pro: "+<value>% faster recharge time",
     con: "-<value>% slower recharge time",
@@ -930,7 +880,6 @@ const weaponEffects = [
     valueCon: 40,
   },
   {
-    cost: 1,
     for: weaponTypeGroups.ConsumableProjectile,
     pro: "+<value>% increased movement speed after launching the projectile for 4 seconds",
     con: "-<value>% decreased movement speed after launching the projectile for 4 seconds",
@@ -939,7 +888,6 @@ const weaponEffects = [
   },
   //// Rocket_Launcher, Pipe_Launcher ////
   {
-    cost: 1,
     for: ["Rocket_Launcher", "Pipe_Launcher"],
     pro: "Projectile explodes on direct hit, but also bounces off from the enemy to explode again when hitting any surface, dealing <value>% damage",
     con: "Projectile does not explode on direct hit, but instead bounces off from the enemy to explode when hitting any surface, dealing <value>% damage",
@@ -947,7 +895,6 @@ const weaponEffects = [
     valueCon: 60,
   },
   {
-    cost: 1,
     for: ["Rocket_Launcher", "Pipe_Launcher"],
     pro: "Projectile can bounce on terrain once and still direct hit the enemy. It breaks apart if it touches terrain for a second time",
     con: "Projectile breaks apart if it touches terrain",
@@ -956,7 +903,6 @@ const weaponEffects = [
   },
   // TODO: //// Medi_Gun ////
   {
-    cost: 1,
     for: ["Medi_Gun"],
     pro: "Accumulate ÜberCharge +<value>% faster",
     con: "Accumulate ÜberCharge -<value>% slower",
@@ -964,7 +910,6 @@ const weaponEffects = [
     valueCon: 15,
   },
   {
-    cost: 1,
     for: ["Medi_Gun"],
     pro: "Heal +<value>% more HP per second",
     con: "Heal -<value>% less HP per second",
@@ -972,7 +917,6 @@ const weaponEffects = [
     valueCon: 10,
   },
   {
-    cost: 1,
     for: ["Medi_Gun"],
     pro: "Heals teammates near to the Medi Gun target for <value>% of the target healing",
     con: "Drains HP from teammates near to the Medi Gun target for <value>% of the target, if health of these teammates is more than 50",
@@ -981,7 +925,6 @@ const weaponEffects = [
   },
   //// Sapper ////
   {
-    cost: 1,
     for: ["Sapper"],
     pro: "Sapped buildings are disabled for <value> seconds after the sapper is removed",
     con: "Sapped buildings are not disabled for <value> seconds after the sapper is placed",
@@ -989,20 +932,17 @@ const weaponEffects = [
     valueCon: 2,
   },
   {
-    cost: 1,
     for: ["Sapper"],
     pro: "Alt-Fire: Can throw sapper from a distance, but cannot apply sapper for 4 seconds after that",
     con: "After applying sapper, cannot apply again for 2 seconds",
   },
   {
-    cost: 1,
     for: ["Sapper"],
     pro: "Can apply sapper while invisible",
     con: "Cannot apply sapper while disguised",
   },
   //// ConsumablePassive ////
   {
-    cost: 1,
     for: weaponTypeGroups.ConsumableProjectile,
     pro: "+<value>% faster recharge rate",
     con: "-<value>% slower recharge rate",
@@ -1010,7 +950,6 @@ const weaponEffects = [
     valueCon: 25,
   },
   {
-    cost: 1,
     for: weaponTypeGroups.ConsumableProjectile,
     pro: "+<value>% faster usage time",
     con: "-<value>% slower usage time",
@@ -1019,7 +958,6 @@ const weaponEffects = [
   },
   //// ChargeablePassive ////
   {
-    cost: 1,
     for: weaponTypeGroups.ConsumableProjectile,
     pro: "Charge requires -<value>% less time",
     con: "Charge requires +<value>% more time",
@@ -1028,7 +966,6 @@ const weaponEffects = [
   },
   // TODO: //// Passive ////
   {
-    cost: 1,
     for: weaponTypeGroups.Passive,
     pro: "+<value>% more effective healing from medics",
     con: "-<value>% less effective healing from medics",
@@ -1036,7 +973,6 @@ const weaponEffects = [
     valueCon: 50,
   },
   {
-    cost: 1,
     for: weaponTypeGroups.Passive,
     pro: "Overheal can give you +<value>% more max HP",
     con: "Overheal can give you -<value>% less max HP",
@@ -1044,7 +980,6 @@ const weaponEffects = [
     valueCon: 15,
   },
   {
-    cost: 1,
     for: weaponTypeGroups.Passive,
     pro: "+<value>% jump height",
     con: "-<value>% jump height",
@@ -1052,7 +987,6 @@ const weaponEffects = [
     valueCon: 50,
   },
   {
-    cost: 1,
     for: weaponTypeGroups.Passive,
     pro: "+<value>% running speed when feet are touching the ground for more than 10 seconds",
     con: "-<value>% running speed for 10 seconds when feet are not touching the ground",
@@ -1061,14 +995,12 @@ const weaponEffects = [
   },
   //// Melee ////
   {
-    cost: 1,
     for: weaponTypeGroups.Melee,
     pro: "Taunting removes debuffs",
     con: "While Active: Player is marked for death",
   },
   //// AllScout ////
   {
-    cost: 1,
     for: weaponTypeGroups.AllScout,
     classLimit: ["Scout"],
     pro: "+<value>% reload speed on all weapons",
@@ -1078,7 +1010,6 @@ const weaponEffects = [
   },
   //// AllSoldier ////
   {
-    cost: 1,
     for: weaponTypeGroups.AllSoldier,
     classLimit: ["Soldier"],
     pro: "-<value>% damage to self with all weapons",
@@ -1088,7 +1019,6 @@ const weaponEffects = [
   },
   //// AllPyro ////
   {
-    cost: 1,
     for: weaponTypeGroups.AllPyro,
     classLimit: ["Pyro"],
     pro: "+<value>% longer afterburn on enemies from all weapons",
@@ -1097,7 +1027,6 @@ const weaponEffects = [
     valueCon: 25,
   },
   {
-    cost: 1,
     for: weaponTypeGroups.AllPyro,
     classLimit: ["Pyro"],
     pro: "+<value>% fire damage resistance",
@@ -1107,7 +1036,6 @@ const weaponEffects = [
   },
   //// AllDemoman ////
   {
-    cost: 1,
     for: weaponTypeGroups.AllDemoman,
     classLimit: ["Demoman"],
     pro: "-<value>% damage to self with all weapons",
@@ -1117,7 +1045,6 @@ const weaponEffects = [
   },
   //// AllHeavy ////
   {
-    cost: 1,
     for: weaponTypeGroups.AllHeavy,
     classLimit: ["Heavy"],
     pro: "Sniper Rifle light pointers will become more visible and will also show the general direction of the sniper position",
@@ -1125,7 +1052,6 @@ const weaponEffects = [
   },
   // TODO: //// AllEngineer ////
   {
-    cost: 1,
     for: weaponTypeGroups.AllEngineer,
     classLimit: ["Engineer"],
     pro: "+<value>% more metal from dead enemies",
@@ -1134,7 +1060,6 @@ const weaponEffects = [
     valueCon: 50,
   },
   {
-    cost: 1,
     for: weaponTypeGroups.AllEngineer,
     classLimit: ["Engineer"],
     pro: "All buildings cost -<value>% less metal to repair",
@@ -1143,7 +1068,6 @@ const weaponEffects = [
     valueCon: 30,
   },
   {
-    cost: 1,
     for: weaponTypeGroups.AllEngineer,
     classLimit: ["Engineer"],
     pro: "All buildings cost -<value>% less metal to construct",
@@ -1152,7 +1076,6 @@ const weaponEffects = [
     valueCon: 30,
   },
   {
-    cost: 1,
     for: weaponTypeGroups.AllEngineer,
     classLimit: ["Engineer"],
     pro: "Dispensers cost -<value>% less metal",
@@ -1162,7 +1085,6 @@ const weaponEffects = [
   },
   //// AllMedic ////
   {
-    cost: 1,
     for: weaponTypeGroups.AllMedic,
     classLimit: ["Medic"],
     pro: "You receive +<value>% healing from all sources",
@@ -1172,7 +1094,6 @@ const weaponEffects = [
   },
   //// AllSniper ////
   {
-    cost: 1,
     for: weaponTypeGroups.AllSniper,
     classLimit: ["Sniper"],
     pro: "Spy backstabs will deal only 90 damage to you",
@@ -1180,7 +1101,6 @@ const weaponEffects = [
   },
   // TODO: //// AllSpy ////
   {
-    cost: 1,
     for: weaponTypeGroups.AllSpy,
     classLimit: ["Spy"],
     pro: "You disguise +<value>% faster",
@@ -1189,7 +1109,6 @@ const weaponEffects = [
     valueCon: 50,
   },
   {
-    cost: 1,
     for: weaponTypeGroups.AllSpy,
     classLimit: ["Spy"],
     pro: "You remain disguised for <value> seconds after attacking. Cannot disguise again for 10 seconds after attacking",
@@ -1198,7 +1117,6 @@ const weaponEffects = [
     valueCon: 15,
   },
   {
-    cost: 1,
     for: weaponTypeGroups.AllSpy,
     classLimit: ["Spy"],
     pro: "+<value>% cloak when you backstab",
@@ -1207,7 +1125,6 @@ const weaponEffects = [
     valueCon: 50,
   },
   {
-    cost: 1,
     for: weaponTypeGroups.AllSpy,
     classLimit: ["Spy"],
     pro: "+<value>% cloak from ammo boxes",
@@ -1216,7 +1133,6 @@ const weaponEffects = [
     valueCon: 50,
   },
   {
-    cost: 1,
     for: weaponTypeGroups.AllSpy,
     classLimit: ["Spy"],
     pro: "+<value>% running speed after for 4 seconds after receiving damage (while not using cloak or disguise)",
@@ -1226,7 +1142,6 @@ const weaponEffects = [
   },
   //// AllDemoknight ////
   {
-    cost: 1,
     for: weaponTypeGroups.AllDemoknight,
     classLimit: ["Demoman"],
     pro: "Charging deals +<value>% more damage",
@@ -1235,7 +1150,6 @@ const weaponEffects = [
     valueCon: 25,
   },
   {
-    cost: 1,
     for: weaponTypeGroups.AllDemoknight,
     classLimit: ["Demoman"],
     pro: "Charging lasts +<value>% shorter",
@@ -1244,7 +1158,6 @@ const weaponEffects = [
     valueCon: 20,
   },
   {
-    cost: 1,
     for: weaponTypeGroups.AllDemoknight,
     classLimit: ["Demoman"],
     pro: "Charging run speed increased by +<value>%",
@@ -1253,7 +1166,6 @@ const weaponEffects = [
     valueCon: 20,
   },
   {
-    cost: 1,
     for: weaponTypeGroups.AllDemoknight,
     classLimit: ["Demoman"],
     pro: "Charging meter fill speed increased by +<value>%",
@@ -1262,7 +1174,6 @@ const weaponEffects = [
     valueCon: 20,
   },
   {
-    cost: 1,
     for: weaponTypeGroups.AllDemoknight,
     classLimit: ["Demoman"],
     pro: "Charging meter fill speed increased by +<value>%",
