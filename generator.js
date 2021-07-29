@@ -536,6 +536,13 @@ const weaponEffects = [
     valuePro: 20,
     valueCon: 20,
   },
+  {
+    for: weaponTypeGroups.AllReloading,
+    pro: "On Hit: Makes enemies unable to reload weapons for <value> seconds",
+    con: "On Miss: Makes you unable to reload weapons for <value> seconds",
+    valuePro: 2,
+    valueCon: 2,
+  },
   //// AllBullet ////
   {
     for: weaponTypeGroups.AllBullet,
@@ -698,13 +705,6 @@ const weaponEffects = [
     for: weaponTypeGroups.AllDoesDamage,
     pro: "On Hit: Makes enemies unable to switch weapons for <value> seconds",
     con: "On Miss: Makes you unable to switch weapons for <value> seconds",
-    valuePro: 5,
-    valueCon: 3,
-  },
-  {
-    for: weaponTypeGroups.AllDoesDamage,
-    pro: "On Hit: Makes enemies unable to reload weapons for <value> seconds",
-    con: "On Miss: Makes you unable to reload weapons for <value> seconds",
     valuePro: 5,
     valueCon: 3,
   },
