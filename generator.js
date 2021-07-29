@@ -659,6 +659,12 @@ const weaponEffects = [
   {
     cost: 1,
     for: weaponTypeGroups.All,
+    pro: "Increased air-strafing control",
+    con: "Decreased air-strafing control",
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.All,
     pro: "+<value>% ammo on all weapons",
     con: "-<value>% ammo on all weapons",
     valuePro: 30,
@@ -1021,17 +1027,257 @@ const weaponEffects = [
     valueCon: 30,
   },
   // TODO: //// Passive ////
-  // TODO: //// Melee ////
-  // TODO: //// AllScout ////
-  // TODO: //// AllSoldier ////
-  // TODO: //// AllPyro ////
-  // TODO: //// AllDemoman ////
-  // TODO: //// AllHeavy ////
+  {
+    cost: 1,
+    for: weaponTypeGroups.Passive,
+    pro: "+<value>% more effective healing from medics",
+    con: "-<value>% less effective healing from medics",
+    valuePro: 50,
+    valueCon: 50,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.Passive,
+    pro: "Overheal can give you +<value>% more max HP",
+    con: "Overheal can give you -<value>% less max HP",
+    valuePro: 15,
+    valueCon: 15,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.Passive,
+    pro: "+<value>% max HP",
+    con: "-<value>% max HP",
+    valuePro: 20,
+    valueCon: 20,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.Passive,
+    pro: "+<value>% jump height",
+    con: "-<value>% jump height",
+    valuePro: 25,
+    valueCon: 50,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.Passive,
+    pro: "+<value>% running speed when feet are touching the ground for more than 10 seconds",
+    con: "-<value>% running speed for 10 seconds when feet are not touching the ground",
+    valuePro: 10,
+    valueCon: 10,
+  },
+  //// Melee ////
+  {
+    cost: 1,
+    for: weaponTypeGroups.Melee,
+    pro: "Taunting removes debuffs",
+    con: "While Active: Player is marked for death",
+  },
+  //// AllScout ////
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllScout,
+    classLimit: ["Scout"],
+    pro: "+<value>% reload speed on all weapons",
+    con: "-<value>% reload speed on all weapons",
+    valuePro: 15,
+    valueCon: 15,
+  },
+  //// AllSoldier ////
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllSoldier,
+    classLimit: ["Soldier"],
+    pro: "-<value>% damage to self with all weapons",
+    con: "+<value>% damage to self with all weapons",
+    valuePro: 25,
+    valueCon: 25,
+  },
+  //// AllPyro ////
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllPyro,
+    classLimit: ["Pyro"],
+    pro: "+<value>% longer afterburn on enemies from all weapons",
+    con: "-<value>% longer afterburn on enemies from all weapons",
+    valuePro: 25,
+    valueCon: 25,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllPyro,
+    classLimit: ["Pyro"],
+    pro: "+<value>% fire damage resistance",
+    con: "You are no longer immune to afterburn. Afterburn will last up to <value> seconds on you",
+    valuePro: 35,
+    valueCon: 4,
+  },
+  //// AllDemoman ////
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllDemoman,
+    classLimit: ["Demoman"],
+    pro: "-<value>% damage to self with all weapons",
+    con: "+<value>% damage to self with all weapons",
+    valuePro: 15,
+    valueCon: 15,
+  },
+  //// AllHeavy ////
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllHeavy,
+    classLimit: ["Heavy"],
+    pro: "Sniper Rifle light pointers will become more visible and will also show the general direction of the sniper position",
+    con: "Sniper Rifle light pointers will become invisible to you",
+  },
   // TODO: //// AllEngineer ////
-  // TODO: //// AllMedic ////
-  // TODO: //// AllSniper ////
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllEngineer,
+    classLimit: ["Engineer"],
+    pro: "+<value>% more metal from dead enemies",
+    con: "-<value>% less metal from dead enemies",
+    valuePro: 50,
+    valueCon: 50,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllEngineer,
+    classLimit: ["Engineer"],
+    pro: "All buildings cost -<value>% less metal to repair",
+    con: "All buildings cost +<value>% more metal to repair",
+    valuePro: 30,
+    valueCon: 30,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllEngineer,
+    classLimit: ["Engineer"],
+    pro: "All buildings cost -<value>% less metal to construct",
+    con: "All buildings cost +<value>% more metal to construct",
+    valuePro: 30,
+    valueCon: 30,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllEngineer,
+    classLimit: ["Engineer"],
+    pro: "Dispensers cost -<value>% less metal",
+    con: "Dispensers cost +<value>% more metal",
+    valuePro: 70,
+    valueCon: 70,
+  },
+  //// AllMedic ////
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllMedic,
+    classLimit: ["Medic"],
+    pro: "You receive +<value>% healing from all sources",
+    con: "You receive -<value>% healing from all sources",
+    valuePro: 50,
+    valueCon: 50,
+  },
+  //// AllSniper ////
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllSniper,
+    classLimit: ["Sniper"],
+    pro: "Spy backstabs will deal only 90 damage to you",
+    con: "Any damage from a spy knife will count as a successful backstab",
+  },
   // TODO: //// AllSpy ////
-  // TODO: //// AllDemoknight ////
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllSpy,
+    classLimit: ["Spy"],
+    pro: "You disguise +<value>% faster",
+    con: "You disguise -<value>% slower",
+    valuePro: 50,
+    valueCon: 50,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllSpy,
+    classLimit: ["Spy"],
+    pro: "You remain disguised for <value> seconds after attacking. Cannot disguise again for 10 seconds after attacking",
+    con: "Cannot disguise for <value> seconds after attacking",
+    valuePro: 3,
+    valueCon: 15,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllSpy,
+    classLimit: ["Spy"],
+    pro: "+<value>% cloak when you backstab",
+    con: "-<value>% cloak when you backstab",
+    valuePro: 50,
+    valueCon: 50,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllSpy,
+    classLimit: ["Spy"],
+    pro: "+<value>% cloak from ammo boxes",
+    con: "-<value>% cloak from ammo boxes",
+    valuePro: 50,
+    valueCon: 50,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllSpy,
+    classLimit: ["Spy"],
+    pro: "+<value>% running speed after for 4 seconds after receiving damage (while not using cloak or disguise)",
+    con: "-<value>% running speed after for 4 seconds after receiving damage (while not using cloak or disguise)",
+    valuePro: 20,
+    valueCon: 20,
+  },
+  //// AllDemoknight ////
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllDemoknight,
+    classLimit: ["Demoman"],
+    pro: "Charging deals +<value>% more damage",
+    con: "Charging deals -<value>% less damage",
+    valuePro: 25,
+    valueCon: 25,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllDemoknight,
+    classLimit: ["Demoman"],
+    pro: "Charging lasts +<value>% shorter",
+    con: "Charging lasts -<value>% longer",
+    valuePro: 20,
+    valueCon: 20,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllDemoknight,
+    classLimit: ["Demoman"],
+    pro: "Charging run speed increased by +<value>%",
+    con: "Charging run speed decreased by -<value>%",
+    valuePro: 20,
+    valueCon: 20,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllDemoknight,
+    classLimit: ["Demoman"],
+    pro: "Charging meter fill speed increased by +<value>%",
+    con: "Charging meter fill speed decreased by -<value>%",
+    valuePro: 20,
+    valueCon: 20,
+  },
+  {
+    cost: 1,
+    for: weaponTypeGroups.AllDemoknight,
+    classLimit: ["Demoman"],
+    pro: "Charging meter fill speed increased by +<value>%",
+    con: "Charging meter fill speed decreased by -<value>%",
+    valuePro: 20,
+    valueCon: 20,
+  },
 ];
 
 generateBtn.addEventListener("click", () => {
