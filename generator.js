@@ -631,15 +631,8 @@ const weaponEffects = [
     for: weaponTypeGroups.All,
     pro: "+<value> Max HP",
     con: "-<value> Max HP",
-    valuePro: 30,
-    valueCon: 30,
-  },
-  {
-    for: weaponTypeGroups.All,
-    pro: "+<value>% Max HP",
-    con: "-<value>% Max HP",
-    valuePro: 20,
-    valueCon: 20,
+    valuePro: 25,
+    valueCon: 25,
   },
   {
     for: weaponTypeGroups.All,
