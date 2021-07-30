@@ -87,7 +87,7 @@ const weaponTypesByClass = [
   [
     // Soldier
     { slot: 1, type: weaponTypes.Rocket_Launcher },
-    { slot: 1, type: weaponTypes.Shotgun },
+    { slot: 2, type: weaponTypes.Shotgun },
     { slot: 2, type: weaponTypes.Banner },
     { slot: 2, type: weaponTypes.Backpack },
     { slot: 2, type: weaponTypes.Shoes },
@@ -97,8 +97,8 @@ const weaponTypesByClass = [
   [
     // Pyro
     { slot: 1, type: weaponTypes.Flamethrower },
-    { slot: 1, type: weaponTypes.Shotgun },
-    { slot: 1, type: weaponTypes.Flare_Gun },
+    { slot: 2, type: weaponTypes.Shotgun },
+    { slot: 2, type: weaponTypes.Flare_Gun },
     { slot: 2, type: weaponTypes.Backpack },
     { slot: 2, type: weaponTypes.Shoes },
     { slot: 2, type: weaponTypes.Throwable_AoE },
@@ -159,6 +159,7 @@ const weaponTypesByClass = [
   [
     // Spy
     { slot: 1, type: weaponTypes.Spy_Revolver },
+    { slot: 1, type: weaponTypes.Shoes },
     { slot: 2, type: weaponTypes.Sapper },
     { slot: 2, type: weaponTypes.Invis_Watch },
     { slot: 3, type: weaponTypes.Backstabbing_Melee },
