@@ -1306,7 +1306,7 @@ function cloneJson(obj) {
 function formatWeaponAsHtml(weapon) {
   return [
     `<div id="weapon">`,
-    `  <div id="weaponImage"> <img src="" /> </div>`,
+    `  <div id="weaponImage"> <img src="/tf2-weapon-generator/weapon-images/${weapon.type}.png" /> </div>`,
     `  <div id="weaponName" class="my-3">New ${weapon.weaponSlotName} for the ${weapon.playerClassName}</div>`,
     `  <div id="weaponStats" class="my-3">`,
     `    <div id="weaponLevel">`,
