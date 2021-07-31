@@ -2,7 +2,29 @@ const powerLevelSelect = document.getElementById("powerLevelSelect");
 const playerClassSelect = document.getElementById("playerClassSelect");
 const weaponSlotSelect = document.getElementById("weaponSlotSelect");
 const generateBtn = document.getElementById("generateBtn");
+const getImageBtn = document.getElementById("getImageBtn");
 const generatedWeaponArea = document.getElementById("generatedWeaponArea");
+
+generateBtn.addEventListener("click", () => {
+  const playerClass = playerClassSelect.value;
+  const weaponSlot = weaponSlotSelect.value;
+  const powerLevel = powerLevelSelect.value;
+
+  const weapon = generateWeapon(
+    parseInt(playerClass) || getRandom(1, 9),
+    parseInt(weaponSlot) || getRandom(1, 3),
+    parseInt(powerLevel)
+  );
+
+  generatedWeaponArea.innerHTML = formatWeaponAsHtml(weapon);
+});
+
+getImageBtn.addEventListener("click", () => {
+  html2canvas(generatedWeaponArea).then(function (canvas) {
+    var img = canvas.toDataURL("image/png");
+    var popup = window.open(img, "", "width=500,height=700");
+  });
+});
 
 const strings = {
   classes: [
@@ -1177,20 +1199,6 @@ const weaponEffects = [
     valueCon: 20,
   },
 ];
-
-generateBtn.addEventListener("click", () => {
-  const playerClass = playerClassSelect.value;
-  const weaponSlot = weaponSlotSelect.value;
-  const powerLevel = powerLevelSelect.value;
-
-  const weapon = generateWeapon(
-    parseInt(playerClass) || getRandom(1, 9),
-    parseInt(weaponSlot) || getRandom(1, 3),
-    parseInt(powerLevel)
-  );
-
-  generatedWeaponArea.innerHTML = formatWeaponAsHtml(weapon);
-});
 
 function getRandom(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
