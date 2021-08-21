@@ -1271,11 +1271,25 @@ function addWeaponProsAndCons(weapon) {
   const selectedCons = selectedConIndexes.map((i) => possibleOptions[i]);
 
   weapon.pros.push(
-    ...selectedPros.map((i) => i.pro.replace("<value>", i.valuePro))
+    ...selectedPros.map((i) =>
+      i.pro.replace("<value>", addRandomnessToNumber(i.valuePro))
+    )
   );
   weapon.cons.push(
-    ...selectedCons.map((i) => i.con.replace("<value>", i.valueCon))
+    ...selectedCons.map((i) =>
+      i.con.replace("<value>", addRandomnessToNumber(i.valueCon))
+    )
   );
+}
+
+function addRandomnessToNumber(num, maxDifferencePercent = 0.2) {
+  console.log("adding randomness");
+  if (!num) return num;
+  const maxDifference = Math.floor(num * maxDifferencePercent);
+  if (maxDifference === 0) return num;
+  const min = num - maxDifference;
+  const max = num + maxDifference;
+  return getRandom(min, max);
 }
 
 function selectRandomIndexes(
