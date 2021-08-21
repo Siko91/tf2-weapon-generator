@@ -15,21 +15,12 @@ generateBtn.addEventListener("click", () => {
     parseInt(powerLevel)
   );
 
-  generatedWeaponArea.innerHTML = formatWeaponAsHtml(weapon);
-
-  // put item in the URL
-  const url = new URL(window.location.toString());
-  url.hash = Base64.encode(JSON.stringify(weapon));
-  document.title = `New ${weapon.weaponSlotName} for the ${weapon.playerClassName}`;
-  window.history.pushState(
-    {
-      html: document.documentElement.innerHTML,
-      pageTitle: document.title,
-    },
-    document.title,
-    url.toString()
-  );
+  window.location.hash = Base64.encode(JSON.stringify(weapon));
 });
+
+window.onhashchange = function () {
+  tryLoadWeaponFromUrl();
+};
 
 function tryLoadWeaponFromUrl() {
   const hash = window.location.hash;
@@ -38,6 +29,7 @@ function tryLoadWeaponFromUrl() {
   const weapon = JSON.parse(decoded);
 
   generatedWeaponArea.innerHTML = formatWeaponAsHtml(weapon);
+  document.title = `New ${weapon.weaponSlotName} for the ${weapon.playerClassName}`;
 }
 
 tryLoadWeaponFromUrl();
