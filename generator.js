@@ -744,7 +744,9 @@ const weaponEffects = [
     con: "Cannot Crit",
   },
   {
-    for: weaponTypeGroups.AllDoesDamage,
+    for: weaponTypeGroups.AllDoesDamage.filter(
+      (i) => i !== weaponTypes.Sniper_Rifle && i !== weaponTypes.Bow_and_Arrows
+    ),
     pro: "Increased chance of random critical hit",
     con: "No random critical hits",
   },
