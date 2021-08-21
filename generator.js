@@ -1025,8 +1025,8 @@ const weaponEffects = [
   },
   {
     for: weaponTypeGroups.Passive,
-    pro: "+<value>% running speed when feet are touching the ground for more than 10 seconds",
-    con: "-<value>% running speed for 10 seconds when feet are not touching the ground",
+    pro: "+<value>% speed boost for 3 seconds after jumping",
+    con: "-<value>% slower speed for 10 seconds after jumping",
     valuePro: 10,
     valueCon: 10,
   },
