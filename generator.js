@@ -1017,7 +1017,7 @@ const weaponEffects = [
   //// Melee ////
   {
     for: weaponTypeGroups.Melee,
-    pro: "Taunting removes debuffs",
+    pro: "Taunting removes debuffs. Taunt takes 1 second",
     con: "While Active: Player is marked for death",
   },
   //// AllScout ////
@@ -1254,36 +1254,67 @@ function addWeaponProsAndCons(weapon) {
     weaponEffects
       .filter((i) => i.for.includes(weapon.type))
       .filter((i) => !i.classLimit || i.classLimit === weapon.playerClassName)
-  );
+  ).map((option) => {
+    return {
+      ...option,
+      valuePro: addRandomnessToNumber(option.valuePro),
+      valueCon: addRandomnessToNumber(option.valueCon),
+    };
+  });
 
   const selectedProIndexes = selectRandomIndexes(
     possibleOptions.length,
     weapon.proPoints,
-    []
+    [],
+    (i) => possibleOptions[i].valuePro !== undefined
   );
   const selectedConIndexes = selectRandomIndexes(
     possibleOptions.length,
     weapon.conPoints,
+    selectedProIndexes,
+    (i) => possibleOptions[i].valueCon !== undefined
+  );
+
+  const selectedPros = getSelectedOptionsByIndexes(
+    possibleOptions,
     selectedProIndexes
   );
-
-  const selectedPros = selectedProIndexes.map((i) => possibleOptions[i]);
-  const selectedCons = selectedConIndexes.map((i) => possibleOptions[i]);
+  const selectedCons = getSelectedOptionsByIndexes(
+    possibleOptions,
+    selectedConIndexes
+  );
 
   weapon.pros.push(
-    ...selectedPros.map((i) =>
-      i.pro.replace("<value>", addRandomnessToNumber(i.valuePro))
-    )
+    ...selectedPros.map((i) => i.pro.replace("<value>", i.valuePro))
   );
   weapon.cons.push(
-    ...selectedCons.map((i) =>
-      i.con.replace("<value>", addRandomnessToNumber(i.valueCon))
-    )
+    ...selectedCons.map((i) => i.con.replace("<value>", i.valueCon))
   );
 }
 
+function getSelectedOptionsByIndexes(possibleOptions, selectedIndexes) {
+  const selectedOptions = [];
+  for (let i = 0; i < selectedIndexes.length; i++) {
+    const index = selectedIndexes[i];
+    let multiplier = 1;
+    while (i < selectedIndexes.length - 1 && selectedIndexes[i + 1] === index) {
+      i++;
+      multiplier++;
+    }
+    const option = possibleOptions[index];
+    if (multiplier > 1) {
+      console.log(`Option #${index} x${multiplier}`);
+    }
+    selectedOptions.push({
+      ...option,
+      valuePro: option.valuePro * multiplier,
+      valueCon: option.valueCon * multiplier,
+    });
+  }
+  return selectedOptions;
+}
+
 function addRandomnessToNumber(num, maxDifferencePercent = 0.2) {
-  console.log("adding randomness");
   if (!num) return num;
   const maxDifference = Math.floor(num * maxDifferencePercent);
   if (maxDifference === 0) return num;
@@ -1296,10 +1327,21 @@ function selectRandomIndexes(
   collectionSize,
   countToSelect,
   forbiddenIndexes,
+  checkCanStack = (i) => false,
+  chanceToStack = 0.33,
   maxAttempts = 100
 ) {
   const indexes = [];
   while (indexes.length < countToSelect && maxAttempts-- > 0) {
+    const indexToStack = indexes[indexes.length - 1];
+    if (indexes.length && checkCanStack(indexToStack)) {
+      const roll = getRandom(0, 100);
+      const threshold = chanceToStack * 100;
+      if (roll < threshold) {
+        indexes.push(indexToStack);
+        continue;
+      }
+    }
     const index = getRandom(0, collectionSize - 1);
     if (indexes.includes(index) || forbiddenIndexes.includes(index)) continue;
     indexes.push(index);
