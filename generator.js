@@ -591,7 +591,7 @@ const weaponEffects = [
   },
   {
     for: weaponTypeGroups.AllBullet.filter(
-      (i) => i !== weaponTypes.Sniper_Rifle
+      (i) => i !== weaponTypes.Sniper_Rifle.name
     ),
     pro: "<value>% less bullet spread",
     con: "<value>% more bullet spread",
@@ -605,7 +605,7 @@ const weaponEffects = [
   },
   {
     for: weaponTypeGroups.AllBullet.filter(
-      (i) => i !== weaponTypes.Sniper_Rifle
+      (i) => i !== weaponTypes.Sniper_Rifle.name
     ),
     pro: "Less reduction of damage on faraway enemies",
     con: "Further reduction of damage on faraway enemies",
@@ -745,7 +745,9 @@ const weaponEffects = [
   },
   {
     for: weaponTypeGroups.AllDoesDamage.filter(
-      (i) => i !== weaponTypes.Sniper_Rifle && i !== weaponTypes.Bow_and_Arrows
+      (i) =>
+        i !== weaponTypes.Sniper_Rifle.name &&
+        i !== weaponTypes.Bow_and_Arrows.name
     ),
     pro: "Increased chance of random critical hit",
     con: "No random critical hits",
