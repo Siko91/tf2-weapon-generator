@@ -597,8 +597,8 @@ const weaponEffects = [
     for: weaponTypeGroups.AllBullet.filter(
       (i) => i === weaponTypes.Sniper_Rifle
     ),
-    pro: "Less reduction of damage on faraway enemies",
-    con: "Further reduction of damage on faraway enemies",
+    pro: "Less damage reduction on faraway enemies",
+    con: "Increased damage reduction on faraway enemies",
   },
   //// AllAutomatic ////
   {
@@ -731,7 +731,7 @@ const weaponEffects = [
   {
     for: weaponTypeGroups.AllDoesDamage,
     pro: "Crits whenever it would normally mini-crit",
-    con: "Cannot Crit",
+    con: "Mini-crits whenever it would normally crit",
   },
   {
     for: weaponTypeGroups.AllDoesDamage,
@@ -769,7 +769,7 @@ const weaponEffects = [
   {
     for: weaponTypeGroups.BurstBullet,
     pro: "On Hit: Heal <value> HP per connecting bullet",
-    con: "The bullet shell explodes in your hands each time you fire the weapon causing you to lose <value> HP",
+    con: "The bullet shell explodes in your hands each time you fire, causing you to lose <value> HP",
     valuePro: 2,
     valueCon: 3,
   },
@@ -902,8 +902,8 @@ const weaponEffects = [
   },
   {
     for: weaponTypeGroups.ConsumableProjectile,
-    pro: "+<value>% increased movement speed after launching the projectile for 4 seconds",
-    con: "-<value>% decreased movement speed after launching the projectile for 4 seconds",
+    pro: "+<value>% increased movement speed after firing for 4 seconds",
+    con: "-<value>% decreased movement speed after firing for 4 seconds",
     valuePro: 15,
     valueCon: 15,
   },
@@ -980,8 +980,8 @@ const weaponEffects = [
   //// ChargeablePassive ////
   {
     for: weaponTypeGroups.ChargeablePassive,
-    pro: "Charge requires -<value>% less time",
-    con: "Charge requires +<value>% more time",
+    pro: "Charges -<value>% faster",
+    con: "Charges +<value>% slower",
     valuePro: 30,
     valueCon: 30,
   },
@@ -1173,32 +1173,24 @@ const weaponEffects = [
   {
     for: weaponTypeGroups.AllDemoknight,
     classLimit: ["Demoman"],
-    pro: "Charging lasts +<value>% shorter",
-    con: "Charging lasts -<value>% longer",
+    pro: "Charge duration increased by <value>%",
+    con: "Charge duration decreased by <value>%",
     valuePro: 20,
     valueCon: 20,
   },
   {
     for: weaponTypeGroups.AllDemoknight,
     classLimit: ["Demoman"],
-    pro: "Charging run speed increased by +<value>%",
-    con: "Charging run speed decreased by -<value>%",
+    pro: "Charge speed increased by <value>%",
+    con: "Charge speed decreased by <value>%",
     valuePro: 20,
     valueCon: 20,
   },
   {
     for: weaponTypeGroups.AllDemoknight,
     classLimit: ["Demoman"],
-    pro: "Charging meter fill speed increased by +<value>%",
-    con: "Charging meter fill speed decreased by -<value>%",
-    valuePro: 20,
-    valueCon: 20,
-  },
-  {
-    for: weaponTypeGroups.AllDemoknight,
-    classLimit: ["Demoman"],
-    pro: "Charging meter fill speed increased by +<value>%",
-    con: "Charging meter fill speed decreased by -<value>%",
+    pro: "Charge meter increases <value>% faster",
+    con: "Charge meter increases <value>% slower",
     valuePro: 20,
     valueCon: 20,
   },
