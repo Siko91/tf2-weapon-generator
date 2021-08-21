@@ -2,7 +2,6 @@ const powerLevelSelect = document.getElementById("powerLevelSelect");
 const playerClassSelect = document.getElementById("playerClassSelect");
 const weaponSlotSelect = document.getElementById("weaponSlotSelect");
 const generateBtn = document.getElementById("generateBtn");
-const getImageBtn = document.getElementById("getImageBtn");
 const generatedWeaponArea = document.getElementById("generatedWeaponArea");
 
 generateBtn.addEventListener("click", () => {
@@ -17,14 +16,31 @@ generateBtn.addEventListener("click", () => {
   );
 
   generatedWeaponArea.innerHTML = formatWeaponAsHtml(weapon);
+
+  // put item in the URL
+  const url = new URL(window.location.toString());
+  url.hash = Base64.encode(JSON.stringify(weapon));
+  document.title = `New ${weapon.weaponSlotName} for the ${weapon.playerClassName}`;
+  window.history.pushState(
+    {
+      html: document.documentElement.innerHTML,
+      pageTitle: document.title,
+    },
+    document.title,
+    url.toString()
+  );
 });
 
-getImageBtn.addEventListener("click", () => {
-  html2canvas(generatedWeaponArea).then(function (canvas) {
-    var img = canvas.toDataURL("image/png");
-    var popup = window.open(img, "", "width=500,height=700");
-  });
-});
+function tryLoadWeaponFromUrl() {
+  const hash = window.location.hash;
+  if (!hash) return;
+  const decoded = Base64.decode(hash.substring(1));
+  const weapon = JSON.parse(decoded);
+
+  generatedWeaponArea.innerHTML = formatWeaponAsHtml(weapon);
+}
+
+tryLoadWeaponFromUrl();
 
 const strings = {
   classes: [
@@ -1302,9 +1318,6 @@ function getSelectedOptionsByIndexes(possibleOptions, selectedIndexes) {
       multiplier++;
     }
     const option = possibleOptions[index];
-    if (multiplier > 1) {
-      console.log(`Option #${index} x${multiplier}`);
-    }
     selectedOptions.push({
       ...option,
       valuePro: option.valuePro * multiplier,
