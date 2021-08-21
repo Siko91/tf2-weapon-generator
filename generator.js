@@ -594,9 +594,11 @@ const weaponEffects = [
     con: "Bullets cannot pass through allies",
   },
   {
-    for: weaponTypeGroups.AllBullet,
-    pro: "Reduced falloff damage correction",
-    con: "Increased falloff damage correction",
+    for: weaponTypeGroups.AllBullet.filter(
+      (i) => i === weaponTypes.Sniper_Rifle
+    ),
+    pro: "Less reduction of damage on faraway enemies",
+    con: "Further reduction of damage on faraway enemies",
   },
   //// AllAutomatic ////
   {
@@ -628,7 +630,9 @@ const weaponEffects = [
   },
   //// AllCanHit ////
   {
-    for: weaponTypeGroups.AllCanHit,
+    for: weaponTypeGroups.AllCanHit.filter((i) =>
+      weaponTypeGroups.AllAutomatic.includes(i)
+    ),
     pro: "On Hit: +<value> HP",
     con: "On Miss: -<value> HP",
     valuePro: 15,
@@ -765,9 +769,9 @@ const weaponEffects = [
   {
     for: weaponTypeGroups.BurstBullet,
     pro: "On Hit: Heal <value> HP per connecting bullet",
-    con: "On Shot: Mini explosion in your hands - lose <value> HP from bleeding",
+    con: "The bullet shell explodes in your hands each time you fire the weapon causing you to lose <value> HP",
     valuePro: 2,
-    valueCon: 2,
+    valueCon: 3,
   },
   {
     for: weaponTypeGroups.BurstBullet,
@@ -783,7 +787,7 @@ const weaponEffects = [
     valuePro: 30,
     valueCon: 10,
   },
-  // TODO: //// SingleBullet ////
+  //// SingleBullet ////
   {
     for: weaponTypeGroups.SingleBullet,
     pro: "On Headshot: Next reload will be <value>% faster",
@@ -864,7 +868,7 @@ const weaponEffects = [
     valuePro: 40,
     valueCon: 40,
   },
-  // TODO: //// SingleShotProjectile ////
+  //// SingleShotProjectile ////
   {
     for: weaponTypeGroups.SingleShotProjectile,
     pro: "On Hit: Loading next shot will be +<value>% faster",
@@ -918,7 +922,7 @@ const weaponEffects = [
     valuePro: 50,
     valueCon: 50,
   },
-  // TODO: //// Medi_Gun ////
+  //// Medi_Gun ////
   {
     for: ["Medi_Gun"],
     pro: "Accumulate ÜberCharge +<value>% faster",
@@ -960,14 +964,14 @@ const weaponEffects = [
   },
   //// ConsumablePassive ////
   {
-    for: weaponTypeGroups.ConsumableProjectile,
+    for: weaponTypeGroups.ConsumablePassive,
     pro: "+<value>% faster recharge rate",
     con: "-<value>% slower recharge rate",
     valuePro: 25,
     valueCon: 25,
   },
   {
-    for: weaponTypeGroups.ConsumableProjectile,
+    for: weaponTypeGroups.ConsumablePassive,
     pro: "+<value>% faster usage time",
     con: "-<value>% slower usage time",
     valuePro: 50,
@@ -975,7 +979,7 @@ const weaponEffects = [
   },
   //// ChargeablePassive ////
   {
-    for: weaponTypeGroups.ConsumableProjectile,
+    for: weaponTypeGroups.ChargeablePassive,
     pro: "Charge requires -<value>% less time",
     con: "Charge requires +<value>% more time",
     valuePro: 30,
