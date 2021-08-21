@@ -590,7 +590,9 @@ const weaponEffects = [
     valueCon: 10,
   },
   {
-    for: weaponTypeGroups.AllBullet,
+    for: weaponTypeGroups.AllBullet.filter(
+      (i) => i !== weaponTypes.Sniper_Rifle
+    ),
     pro: "<value>% less bullet spread",
     con: "<value>% more bullet spread",
     valuePro: 30,
