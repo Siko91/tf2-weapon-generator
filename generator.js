@@ -605,7 +605,7 @@ const weaponEffects = [
   },
   {
     for: weaponTypeGroups.AllBullet.filter(
-      (i) => i === weaponTypes.Sniper_Rifle
+      (i) => i !== weaponTypes.Sniper_Rifle
     ),
     pro: "Less reduction of damage on faraway enemies",
     con: "Further reduction of damage on faraway enemies",
