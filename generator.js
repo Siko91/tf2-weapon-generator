@@ -685,9 +685,9 @@ const weaponEffects = [
   {
     for: weaponTypeGroups.All,
     pro: "Heals up to +<value> HP per second, while not taking damage",
-    con: "Bleeds up to -<value> HP per second, after not receiving healing for a while",
+    con: "Bleeds up to -2 HP per second after not healing or not killing an enemy for <value> seconds",
     valuePro: 3,
-    valueCon: 3,
+    valueCon: 30,
   },
   {
     for: weaponTypeGroups.All,
