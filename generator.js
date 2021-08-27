@@ -502,7 +502,28 @@ const mandatoryPros = {
       text: "The first hit will attach the enemy to you. Neither will be able to move far from the other",
     },
   ],
-
+  Wrench_Melee: [
+    {
+      pointCost: 0,
+      text: "Upgrades, repairs and speeds up construction of friendly buildings on hit.",
+    },
+    {
+      pointCost: 1,
+      text: "Hitting an enemy building a single time instantly reverts it to a lower level version of itself",
+    },
+    {
+      pointCost: 1,
+      text: "Removes sappers in a single hit",
+    },
+    {
+      pointCost: 1,
+      text: "As a team player, you spend -50% les metal when upgrading the buildings of your teammates",
+    },
+    {
+      pointCost: 1,
+      text: "Alt-Fire: Takes away metal from the ammo pool of your own sentry",
+    },
+  ],
   Pybro_Melee: [
     { pointCost: 1, text: "Damage removes Sappers" },
     {
