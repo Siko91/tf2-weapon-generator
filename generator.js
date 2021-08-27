@@ -741,7 +741,7 @@ const weaponEffects = [
   {
     for: weaponTypeGroups.AllDoesDamage,
     pro: "Crits whenever it would normally mini-crit",
-    con: "Cannot Crit",
+    con: "Mini-crits whenever it would normally crit",
   },
   {
     for: weaponTypeGroups.AllDoesDamage.filter(
