@@ -517,7 +517,7 @@ const mandatoryPros = {
     },
     {
       pointCost: 1,
-      text: "As a team player, you spend -50% les metal when upgrading the buildings of your teammates",
+      text: "As a team player, you spend -50% less metal when upgrading the buildings of your teammates",
     },
     {
       pointCost: 1,
