@@ -975,7 +975,7 @@ const weaponEffects = [
   {
     for: ["Medi_Gun"],
     pro: "Heals teammates near to the Medi Gun target for <value>% of the target healing",
-    con: "Drains HP from teammates near to the Medi Gun target for <value>% of the target, if health of these teammates is more than 50",
+    con: "Drains HP from teammates (with health more than 50) near to the Medi Gun target for <value>% of the health delivered to the Medi Gun target.",
     valuePro: 10,
     valueCon: 10,
   },
